@@ -3,8 +3,31 @@ module.exports = {
 		"./pages/**/*.{js,ts,jsx,tsx}",
 		"./components/**/*.{js,ts,jsx,tsx}",
   ],
+	darkMode: 'class',
   theme: {
-    extend: {},
+		extend: {
+			colors: {
+				'dark': '#1E273B',
+				'light': '#fff',
+				'accent': '#FF4A6B',
+				'item-dark': '#28334c',
+				'item-light': '#f0e7db',
+			},
+			fontFamily: {
+				sansSerif: ['Tahoma, sans-serif'],
+				serif: ['IBM Plex Mono', 'serif'],
+				mono: ['Dank Mono', 'monospace']
+			},
+			fontSize: {
+				h1: '30px',
+				h2: '25px',
+				h3: '20px',
+				body: '18px',
+			},
+			spacing: {
+				section: '40px',
+			},
+		},
   },
   plugins: [],
 }

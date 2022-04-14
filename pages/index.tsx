@@ -1,8 +1,13 @@
 import type { NextPage } from 'next'
+import Header from '../components/home/header';
+import About from '../components/home/about';
 
 const Home: NextPage = () => {
   return (
-		<h1 className='bg-slate-500 text-[30px]'>this is an h1</h1>
+		<>
+			<Header />
+			<About />
+		</>
   )
 }
 

@@ -7,7 +7,7 @@ const Blog = () => {
 			<div>
 				<Heading>Blog</Heading>
 			</div>
-			<div className="grid grid-cols-2 gap-x-2 my-4">
+			<div className="grid grid-cols-2 gap-8 my-4">
 				<article>
 					<img className="h-[125px] w-full object-none rounded mb-2" src="https://images.unsplash.com/photo-1649899029737-7417f2b9d947?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80" alt="asdf"/>
 					<p className='font-mono'>Apr 11, 2022</p>

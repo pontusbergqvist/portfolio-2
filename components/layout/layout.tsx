@@ -7,11 +7,13 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
 	return (
-		<div className='bg-light text-dark dark:bg-dark dark:text-light text-body'>
-			<div className='w-[550px] mx-auto'>
+		<div className='bg-light text-dark dark:bg-dark dark:text-light text-body font-sansSerif'>
+			<div className='w-[650px] mx-auto'>
 				<Nav />
-				{children}
-				<Footer />
+				<div className='w-[550px] mx-auto'>
+					{children}
+					<Footer />
+				</div>
 			</div>
 		</div>
 	)

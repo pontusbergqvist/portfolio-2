@@ -8,10 +8,10 @@ module.exports = {
 		extend: {
 			colors: {
 				'dark': '#1E273B',
-				'light': '#fff',
+				'light': '#f3f3f3',
 				'accent': '#FF4A6B',
 				'item-dark': '#28334c',
-				'item-light': '#f0e7db',
+				'item-light': '#ddd',
 			},
 			fontFamily: {
 				sansSerif: ['Tahoma, sans-serif'],

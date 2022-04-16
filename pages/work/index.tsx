@@ -17,7 +17,7 @@ const Work: NextPage = () => {
 				{data.map(item => (
 					<Link href={`/work/${item.id}`} key={item.id}>
 						<article className='text-center cursor-pointer'>
-							<img className="h-[125px] w-full object-none rounded mb-2" src={item.url} alt="asdf"/>
+							<img className="h-[150px] w-full object-none rounded mb-2" src={item.url} alt="asdf"/>
 							<h3 className='text-h3'>Project</h3>
 							<p className='text-sm my-1'>{item.description}</p>
 						</article>

@@ -12,7 +12,7 @@ const Typewriter = ({ children }: Props) => {
 	const writer = () => {
 		if (i < inputString.length) setRenderString(renderString += inputString[i]);
 		increment(i++);
-		setTimeout(writer, 100)
+		setTimeout(writer, 100);
 	}
 
 	useEffect(() => writer, []);

@@ -1,18 +1,14 @@
-import Head from 'next/head';
 import Link from 'next/link';
+import Layout from '../../components/layout/layout';
 import type { NextPage } from 'next';
 import Heading from '../../components/shared/heading';
 import data from '../../data/data.json';
 
 const Work: NextPage = () => {
-
 	return (
-		<>
-			<Head>
-				<title>Work | Bergqvist.io</title>
-			</Head>
+		<Layout>
 			<div className='my-28'>
-				<Heading>Portfolio</Heading>
+				<Heading>Work</Heading>
 				<div className='grid grid-cols-2 gap-8'>
 				{data.map(item => (
 					<Link href={`/work/${item.id}`} key={item.id}>
@@ -22,11 +18,11 @@ const Work: NextPage = () => {
 							<p className='text-sm my-1'>{item.description}</p>
 						</article>
 					</Link>
-				))}
+				))} 
 				</div>
 			</div>
-		</>
+		</Layout>
 	)
 }
-
 export default Work;
+

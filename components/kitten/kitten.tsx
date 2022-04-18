@@ -1,4 +1,3 @@
-import Link from '../shared/link';
 import Typewriter from './typewriter';
 import useHover from '../../hooks/useHover';
 

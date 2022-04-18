@@ -17,7 +17,7 @@ const Breadcrumbs = ({ current }: Props) => {
 	return (
 		<div className='inline-flex items-center bg-item-light dark:bg-item-dark font-mono my-2'>
 			<Link href={"/" + getPathStringFromRoute(router.pathname)}>
-				<p className='bg-accent text-light px-2 cursor-pointer'>{getPathStringFromRoute(router.pathname)}</p>
+				<p className='bg-accent text-light px-2 hover:text-dark cursor-pointer'>{getPathStringFromRoute(router.pathname)}</p>
 			</Link>
 			<span className='border-t-[14px] border-t-transparent border-l-[14px] border-l-accent border-b-[14px] border-b-transparent mr-1'></span>
 			<AiOutlineBranches />

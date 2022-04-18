@@ -1,6 +1,8 @@
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
+import { useState } from 'react';
 import { useTheme } from 'next-themes';
 import useSsr from '../../hooks/useSsr';
+import { motion } from 'framer-motion';
 
 const ThemeButton = () => {
 	const { theme, setTheme } = useTheme();
@@ -18,7 +20,7 @@ const ThemeButton = () => {
             className='absolute h-[28px] w-[28px] border-2 left-[-2px] bg-light border-dark rounded-full top-1/2 translate-y-[-50%] transition-transform duration-300 ease-out dark:translate-x-[32px] dark:bg-dark dark:border-light'
           ></div>
         </div>
-	) : <div></div>;	
+	)  : <div></div>;	
 }
 
 export default ThemeButton;

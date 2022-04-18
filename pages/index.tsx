@@ -1,21 +1,17 @@
 import type { NextPage } from 'next'
-import Head from 'next/head';
+import Layout from '../components/layout/layout';
 import Header from '../components/home/header';
 import About from '../components/home/about';
 import Blog from '../components/home/blog';
 
 const Home: NextPage = () => {
   return (
-		<>
-			<Head>
-				<title>Home | Bergqvist.io</title>
-			</Head>
-			<Header />
-			<About />
-			<Blog />
-		</>
+			<Layout>
+				<Header />
+				<About />
+				<Blog />
+			</Layout>
   )
 }
 
 export default Home
-

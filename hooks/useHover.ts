@@ -13,11 +13,6 @@ const useHover = () => {
 	useEffect(() => {
 		ref.current && ref.current.addEventListener("mouseover", onMouseOver);
 		ref.current && ref.current.addEventListener("mouseout", onMouseOut);
-
-		return () => {
-			ref.current.removeEventListener("mouseover", onMouseOver);
-			ref.current.removeEventListener("mouseout", onMouseOut);
-		}
 	}, [ref.current])
 
 	return [ref, isHovering];

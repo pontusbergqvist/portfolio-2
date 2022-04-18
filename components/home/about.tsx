@@ -33,7 +33,7 @@ const About = () => {
 					</li>
 				</ul>
 			</article>
-			<Link to="/">View portfolio</Link>
+			<Link to="/work">View portfolio</Link>
 		</section>
 	)
 }

@@ -1,3 +1,6 @@
+const { screens } = require('tailwindcss/defaultTheme');
+const { brotliCompress } = require('zlib');
+
 module.exports = {
 	content: [
 		"./pages/**/*.{js,ts,jsx,tsx}",
@@ -28,6 +31,11 @@ module.exports = {
 				section: '40px',
 			},
 		},
+		screens: {
+			...screens,
+			blog: '480px',
+			footer: '380px'
+		}
   },
   plugins: [],
 }

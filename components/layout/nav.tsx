@@ -1,21 +1,30 @@
 import ThemeButton from "./themebutton";
+import NavButton from "./navbutton";
 import Link from 'next/link';
 import { useRouter } from "next/router"; 
 
-const Nav = () => {
+interface Props {
+	active: any,
+	setActive: any
+}
+
+const Nav = ({ active, setActive }: Props) => {
 	const router = useRouter();
 	return (
-		<nav className='h-[100px] flex justify-between items-center font-mono'  >
-			<ul className='w-[300px] flex justify-between'>
+		<nav className='h-[100px] flex justify-end md:justify-between items-center font-mono'  >
+			<ul className='w-[300px] hidden md:flex justify-between'>
 				<li className={router.pathname === "/" ? "text-accent": ""}>
-					<Link href="/"><a>$home</a></Link>
+					<Link href="/"><a className="p-1 px-2">home</a></Link>
 				</li>
 				<li className={router.pathname === "/work" ? "text-accent": ""}>
-					<Link href="/work"><a>work</a></Link>
+					<Link href="/work"><a className="p-1 px-2">work</a></Link>
 				</li>
-				<li>blog</li>
+				<li className={router.pathname === "/blog" ? "text-accent": ""}>
+					<Link href="/blog"><a className="p-2 px-3">blog</a></Link>
+				</li>
 			</ul>
 			<ThemeButton />
+			<NavButton active={active} setActive={setActive} />
 		</nav>
 	)
 }

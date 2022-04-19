@@ -3,7 +3,7 @@ import { PageItemAnimationWrapper } from "../shared/animations";
 const Header = () => {
 	return (
 			<header className="my-28">
-				<div className="flex">
+				<div className="flex flex-col items-center sm:items-start sm:flex-row">
 					<div className="h-[100px] w-[100px] border border-accent rounded-full"></div>
 					<div className="mx-5">
 						<h1 className="text-h1 font-mono">Pontus Bergqvist</h1>

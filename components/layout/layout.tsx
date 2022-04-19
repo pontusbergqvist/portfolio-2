@@ -15,7 +15,7 @@ const rtl = {
 }
 
 interface Props {
-	children: JSX.Element
+	children: JSX.Element | JSX.Element[]
 }
 
 const Layout = ({ children }: Props) => {
@@ -26,7 +26,7 @@ const Layout = ({ children }: Props) => {
 			initial="hidden" 
 			animate="enter" 
 			exit="exit" 
-			className='w-[550px] mx-auto'
+			className='max-w-[550px] mx-auto px-3'
 		>
 			{children}
 			<Footer />

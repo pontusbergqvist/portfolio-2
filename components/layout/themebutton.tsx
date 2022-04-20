@@ -2,14 +2,18 @@ import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
 import { useTheme } from 'next-themes';
 import useSsr from '../../hooks/useSsr';
 
-const ThemeButton = () => {
+interface Props {
+	active: boolean
+}
+
+const ThemeButton = ({ active }: Props) => {
 	const { theme, setTheme } = useTheme();
 	const ssr = useSsr();
 
 	return !ssr ? (
 				<div
           aria-hidden
-          className='relative hidden md:flex items-center w-[60px] h-[28px] bg-dark border-2 border-dark rounded-full cursor-pointer dark:border-light light:bg-dark'
+          className={`${active ? 'flex' : 'hidden'} z-10 relative md:flex items-center w-[60px] h-[28px] bg-dark border-2 border-dark rounded-full cursor-pointer dark:border-light light:bg-dark`}
           onClick={() => theme === 'dark' ? setTheme('light') : setTheme('dark')}>
           <div className='absolute top-1/2 translate-y-[-50%] left-[31px] text-yellow-400 dark:translate-x-[-22px]'>
             {theme === 'dark' ? <BsFillSunFill /> : <BsFillMoonFill />}

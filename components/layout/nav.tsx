@@ -10,7 +10,6 @@ interface Props {
 
 const Nav = ({ active, setActive }: Props) => {
 	const router = useRouter();
-	console.log(active)
 	return (
 		<nav className='h-[100px] flex justify-start md:justify-between items-center font-mono px-2' >
 			<ul className='w-[300px] hidden md:flex justify-between'>
@@ -24,7 +23,7 @@ const Nav = ({ active, setActive }: Props) => {
 					<Link href="/blog"><a className="p-2 px-3">blog</a></Link>
 				</li>
 			</ul>
-			<ThemeButton active={active} />
+			<ThemeButton />
 			<NavButton active={active} setActive={setActive} />
 		</nav>
 	)

@@ -16,3 +16,6 @@ const Header = () => {
 }
 
 export default Header;
+
+// Todo:
+// add small(er) breakpoint for red text and maybe use it for stacking items too instead of sm

@@ -7,7 +7,7 @@ interface Props {
 
 const Link = ({ to, children }: Props) => {
 	return (
-		<NextLink href={to}>
+		<NextLink scroll={false} href={to}>
 			<a className='underline text-center font-mono'>{children}</a>
 		</NextLink>
 	)

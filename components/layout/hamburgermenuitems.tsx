@@ -16,7 +16,7 @@ const container = {
 const item = {
 	init: {
 		opacity: 0,
-		x: 50
+		x: -50
 	},
 	enter: {
 		opacity: 1,

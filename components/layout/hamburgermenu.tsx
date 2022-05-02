@@ -1,37 +1,41 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import MenuOverlay from './menuoverlay';
-import { AnimatePresence, useCycle, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import HamburgerMenuItems from './hamburgermenuitems';
+import useWindowWidth from '../../hooks/useWindowWidth';
 import { useRouter } from 'next/router';
 
 const variants = {
 	init: {
-		x: 40,
+		x: -50,
 	},
 	enter: {
 		x: 0,
 		transition: { duration: .3, type: 'spring', }
 	},
 	exit: {
-		x: -40,
+		x: 50,
 		transition: { duration: .2 }
 	},
 }
 
 const HamburgerMenu = () => {
-	const [open, toggleMenu] = useCycle(false, true);
+	const [open, setOpen] = useState(false);
 	const router = useRouter();
+	const breakpoint = useWindowWidth();
 	
 	useEffect(() => {
-		if (window.innerWidth <= 768) {
-			toggleMenu();
+		if (breakpoint) {
+			setOpen(false);
 		}
-	}, [router.route])
+		setOpen(false);
+	}, [breakpoint, router.route])
+
 
 	return (
 		<>
-		<div className="cursor-pointer z-10 fixed md:hidden right-0 mr-3 bg-accent p-2 w-[50px] h-[40px] rounded overflow-x-hidden" onClick={() => toggleMenu()}>
-			<AnimatePresence initial={false} exitBeforeEnter>
+		<div className="cursor-pointer overflow-hidden z-10 fixed md:hidden right-0 mr-3 bg-accent p-2 w-[50px] h-[40px] rounded overflow-x-hidden" onClick={() => setOpen(!open)}>
+			<AnimatePresence initial={false} exitBeforeEnter onExitComplete={() => scrollTo(0, 0)}>
 				<motion.div 
 					key={open ? "open" : "closed"} 
 					variants={variants} 

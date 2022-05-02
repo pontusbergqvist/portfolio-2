@@ -8,7 +8,7 @@ const usePageTransition = (route: string) => {
 		ref.current = route;
 	}, [route])
 
-	if (ref.current === undefined) {
+	if (ref.current === undefined || (!pages.includes(route) && !pages.includes(ref.current))) {
 		return null
 	} else {
 		return pages.indexOf(route) > pages.indexOf(ref.current) ? 'ltr' : 'rtl';

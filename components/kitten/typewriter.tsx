@@ -10,9 +10,11 @@ const Typewriter = ({ children }: Props) => {
 	let [i, increment] = useState(0);
 
 	const writer = () => {
-		if (i < inputString.length) setRenderString(renderString += inputString[i]);
-		increment(i++);
-		setTimeout(writer, 100);
+		if (i < inputString.length) {
+			setRenderString(renderString += inputString[i]);
+			increment(i++);
+			setTimeout(writer, 100)
+		} 
 	}
 
 	useEffect(() => writer, []);

@@ -1,10 +1,8 @@
-import Breadcrumbs from '../../components/shared/breadcrumbs';
 import Heading from '../../components/shared/heading';
 import Layout from '../../components/layout/layout';
 import Tags from '../../components/shared/tags';
 import data from '../../data/data.json';
-import { AiFillGithub } from 'react-icons/ai'
-import { BiLinkExternal } from 'react-icons/bi'
+import { motion } from 'framer-motion';
 
 
 interface params {
@@ -50,7 +48,7 @@ export const getStaticProps = ({ params }: params) => {
 const Post = ({ data }: props) => {
 	return (
 		<Layout>
-			<article className='my-28'>
+			<motion.article className='my-28'>
 			<p className='text-sm'>{data.date} - 2 min read</p>
 			<Heading>{data.name}</Heading>
 				<img src={data.url} alt="" className='w-full h-[250px] object-cover rounded mb-3' />
@@ -65,7 +63,7 @@ const Post = ({ data }: props) => {
 						<p className="text-sm">{data.date}</p>
 					</div>
 				</div>
-			</article>
+			</motion.article>
 		</Layout>
 	)
 }

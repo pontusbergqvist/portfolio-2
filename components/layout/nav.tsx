@@ -1,15 +1,15 @@
 import ThemeButton from "./themebutton";
-import NavButton from "./navbutton";
+import HamburgerMenu from "./hamburgermenu";
+import HamburgerMenuItems from "./hamburgermenuitems";
 import Link from 'next/link';
+import { Overlay } from "../OverlayContext";
 import { useRouter } from "next/router"; 
+import { useContext } from "react";
 
-interface Props {
-	active: any,
-	setActive: any
-}
-
-const Nav = ({ active, setActive }: Props) => {
+const Nav = () => {
 	const router = useRouter();
+	const { active } = useContext(Overlay);
+
 	return (
 		<nav className='h-[100px] flex justify-start md:justify-between items-center font-mono px-2' >
 			<ul className='w-[300px] hidden md:flex justify-between'>
@@ -23,8 +23,13 @@ const Nav = ({ active, setActive }: Props) => {
 					<Link href="/blog"><a className="p-2 px-3">blog</a></Link>
 				</li>
 			</ul>
+
+			{ /* This is disabled for mobile devices */ }
 			<ThemeButton />
-			<NavButton active={active} setActive={setActive} />
+
+			{ /* This is disabled for desktop devides */ }
+			<HamburgerMenu />
+			{ active && <HamburgerMenuItems /> }
 		</nav>
 	)
 }

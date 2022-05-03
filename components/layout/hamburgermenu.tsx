@@ -61,7 +61,7 @@ const HamburgerMenu = () => {
 				</motion.div>
 			</AnimatePresence>
 		</div>	
-			{ open && <MenuOverlay /> }
+			{ open && <MenuOverlay onClick={setOpen} /> }
 			{ open && <HamburgerMenuItems /> }
 		</>
 	)

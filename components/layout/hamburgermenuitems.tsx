@@ -30,7 +30,7 @@ const HamburgerMenuItems = () => {
 	const router = useRouter()
 
 	return (
-		<motion.ul variants={container} initial="init" animate="enter" className="fixed z-10 right-0 top-[80px] flex flex-col text-right mt-3 mr-5">
+		<motion.ul variants={container} initial="init" animate="enter" className="fixed z-10 right-0 top-[80px] flex flex-col text-right pt-3 px-5">
 				<motion.li variants={item} className={`${router.pathname === "/" ? "text-accent": ""} my-3`}>
 					<Link href="/"><a>home</a></Link>
 				</motion.li>

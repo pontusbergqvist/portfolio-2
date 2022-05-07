@@ -1,21 +1,20 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes';
-import Nav from '../components/layout/nav';
+import Nav from '../components/nav';
 import OverlayContext from '../components/OverlayContext';
 import usePageTransition from '../hooks/useTransitionDirection';
 import { AnimatePresence, motion } from 'framer-motion';
 import useWindowWidth from '../hooks/useWindowWidth';
 
-
 function MyApp({ Component, pageProps, router }: AppProps) {
 	const direction = usePageTransition(router.route);
 	const windowWidth = useWindowWidth();
-	
+
 	const variants = {
 		initial: (direction: string) => {
 			return {
-				x: direction === 'ltr' ? -300 : windowWidth ? 300 : -300,
+				x: direction === 'ltr' ? windowWidth ? 300 : -300: -300,
 				opacity: 0,
 				transition: { duration: .2 }
 			}
@@ -27,7 +26,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 		},
 		exit: (direction: string) => {
 			return {
-				x: direction === 'ltr' ? 300 : windowWidth ? -300 : 300,
+				x: direction === 'ltr' ? windowWidth ? -300 : 300 : 300,
 				opacity: 0,
 				transition: { type: 'tween', duration: .2 }
 			}

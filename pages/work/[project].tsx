@@ -1,6 +1,6 @@
 import Breadcrumbs from '../../components/shared/breadcrumbs';
 import Heading from '../../components/shared/heading';
-import Layout from '../../components/layout/layout';
+import Layout from '../../components/layout';
 import Tags from '../../components/shared/tags';
 import data from '../../data/data.json';
 import { AiFillGithub } from 'react-icons/ai'

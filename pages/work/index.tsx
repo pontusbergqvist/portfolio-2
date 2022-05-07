@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Layout from '../../components/layout/layout';
+import Layout from '../../components/layout';
 import type { NextPage } from 'next';
 import Heading from '../../components/shared/heading';
 import data from '../../data/data.json';
@@ -7,7 +7,7 @@ import data from '../../data/data.json';
 const Work: NextPage = () => {
 	return (
 		<Layout>
-			<div className='my-28'>
+			<div className='my-8 md:my-28'>
 				<Heading>Work</Heading>
 				<div className='grid grid-cols-2 gap-8'>
 				{data.map(item => (

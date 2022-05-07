@@ -6,10 +6,10 @@ import { useRouter } from 'next/router';
 
 const container = {
 	init: {
-		transition: { delayChildren: .1, staggerChildren: .1 }
+		transition: { delayChildren: 0, staggerChildren: .1 }
 	},
 	enter: {
-		transition: { delayChildren: .1, staggerChildren: .2 }
+		transition: { delayChildren: .1, staggerChildren: .1 }
 	}
 }
 

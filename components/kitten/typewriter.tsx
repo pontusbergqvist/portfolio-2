@@ -18,7 +18,7 @@ const Typewriter = ({ children }: Props) => {
 	} 
 
 	// eslint-disable-next-line
-	useEffect(() => writer, []);
+	useEffect(() => writer(), []);
 			
 	return (
 		<>

@@ -14,7 +14,7 @@ const Kitten = () => {
 				 じしf_,)〳<br />
 				{isHovering && <Typewriter>Get in touch!</Typewriter>}
 		</a>	
-	) : ""
+	) : <div></div> 
 }
 
 export default Kitten;

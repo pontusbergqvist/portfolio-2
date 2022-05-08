@@ -1,5 +1,3 @@
-import { PageItemAnimationWrapper } from "../shared/animations";
-
 const Header = () => {
 	return (
 			<header className="my-28">
@@ -16,6 +14,3 @@ const Header = () => {
 }
 
 export default Header;
-
-// Todo:
-// add small(er) breakpoint for red text and maybe use it for stacking items too instead of sm

@@ -24,17 +24,11 @@ const HamburgerMenu = () => {
 	const router = useRouter();
 	const breakpoint = useWindowWidth();
 	
-	useEffect(() => {
-		if (breakpoint) {
-			setOpen(false);
-		}
-		setOpen(false);
-	}, [breakpoint, router.route])
-
+	useEffect(() => setOpen(false), [breakpoint, router.route])
 
 	return (
 		<>
-		<div className="cursor-pointer overflow-hidden z-10 fixed md:hidden right-0 mr-3 bg-accent p-2 w-[50px] h-[40px] rounded overflow-x-hidden" onClick={() => setOpen(!open)}>
+		<div className="cursor-pointer overflow-hidden z-20 fixed md:hidden right-0 mr-3 bg-accent p-2 w-[50px] h-[40px] rounded overflow-x-hidden" onClick={() => setOpen(!open)}>
 			<AnimatePresence initial={false} exitBeforeEnter onExitComplete={() => scrollTo(0, 0)}>
 				<motion.div 
 					key={open ? "open" : "closed"} 

@@ -2,7 +2,6 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes';
 import Nav from '../components/nav';
-import OverlayContext from '../components/OverlayContext';
 import usePageTransition from '../hooks/useTransitionDirection';
 import { AnimatePresence, motion } from 'framer-motion';
 import useWindowWidth from '../hooks/useWindowWidth';
@@ -34,27 +33,25 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 	}
 
 	return (
-		<OverlayContext>
-			<ThemeProvider attribute='class' defaultTheme='light'>
-					<div  className='bg-lighk text-dark dark:bg-dark dark:text-light text-body font-sansSerif'>
-						<div className='max-w-[650px] mx-auto'>
-						<Nav />
-						<AnimatePresence exitBeforeEnter initial={false} custom={direction} onExitComplete={() => scrollTo(0, 0)}>
-							<motion.div
-								variants={variants} 
-								initial="initial" 
-								animate="enter" 
-								exit={"exit"}
-								key={router.route}
-								custom={direction}
-							>
-								<Component {...pageProps} />
-							</motion.div>
-						</AnimatePresence>
-					</div>
+		<ThemeProvider attribute='class' defaultTheme='light'>
+				<div  className='bg-lighk text-dark dark:bg-dark dark:text-light text-body font-sansSerif'>
+					<div className='max-w-[650px] mx-auto'>
+					<Nav />
+					<AnimatePresence exitBeforeEnter initial={false} custom={direction} onExitComplete={() => scrollTo(0, 0)}>
+						<motion.div
+							variants={variants} 
+							initial="initial" 
+							animate="enter" 
+							exit={"exit"}
+							key={router.route}
+							custom={direction}
+						>
+							<Component {...pageProps} />
+						</motion.div>
+					</AnimatePresence>
 				</div>
-			</ThemeProvider>
-		</OverlayContext>
+			</div>
+		</ThemeProvider>
 	)
 }
 

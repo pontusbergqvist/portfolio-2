@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 * Checks if the component is rendered on the server. Used as a condition for client side rendering.
 * @returns booelan
 */
-const useSsr = () => {
+const useSsr = (): boolean => {
 	const [ssr, setSsr] = useState(true);
 
 	useEffect(() => {

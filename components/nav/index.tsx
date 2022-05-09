@@ -1,14 +1,10 @@
 import ThemeButton from "./themebutton";
 import HamburgerMenu from "./hamburgermenu";
-import HamburgerMenuItems from "./hamburgermenuitems";
 import Link from 'next/link';
-import { Overlay } from "../OverlayContext";
 import { useRouter } from "next/router"; 
-import { useContext } from "react";
 
 const Nav = () => {
 	const router = useRouter();
-	const { active } = useContext(Overlay);
 
 	return (
 		<nav className='h-[100px] flex justify-start md:justify-between items-center font-mono px-2' >
@@ -29,7 +25,6 @@ const Nav = () => {
 
 			{ /* This is disabled for desktop devides */ }
 			<HamburgerMenu />
-			{ active && <HamburgerMenuItems /> }
 		</nav>
 	)
 }

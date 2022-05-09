@@ -9,7 +9,7 @@ const About = () => {
 				<p className="indent-4">I am a full-stack web developer from Gothenburg, Sweden. Currently I am pursuing university studies, graduating in 2023. My interests include <span className="text-accent">React</span>, <span className='text-accent'>TypeScript</span> and <span className='text-accent'>web design</span>!</p>
 			</main>
 			<article className="my-4">
-				<h3 className="text-h3">Work</h3>
+				<h3 className="text-h3 my-1">Work</h3>
 				<ul>
 					<li className="bg-item-light p-2 my-3 first:mt-0 rounded dark:bg-item-dark">
 						<p className='font-mono'>2022 - </p>
@@ -24,7 +24,7 @@ const About = () => {
 				</ul>
 			</article>
 			<article className="my-4">
-				<h3 className="text-h3">Education</h3>
+				<h3 className="text-h3 my-1">Education</h3>
 				<ul>
 					<li className="bg-item-light p-2 my-3 first:mt-0 rounded dark:bg-item-dark">
 						<p className='font-mono'>2019 - 2020</p>

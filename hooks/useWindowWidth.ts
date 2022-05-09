@@ -3,9 +3,9 @@ import useSsr from './useSsr';
 
 /**
  * This hook was made for when the hamburger menu overlay is active and the viewport width resizes to above the md-breakpoint, the overlay should disappear and the hamburger menu button should have its active state set to false. Or else the user will be stuck in the overlay with no hamburger button to toggle it off since the button uses media queries.
- * @returns boolean value if viewport width is greater than the md-breakpoint
+ * @return {boolean} - value if viewport width is greater than the md-breakpoint
  */
-const useWindowWidth = () => {
+const useWindowWidth = (): boolean => {
 	const ssr = useSsr();
   const [width, setWidth] = useState(0);
 

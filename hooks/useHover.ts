@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-/**
- * Checks if element is being hovered
-*/
+/** Checks if an element is being hovered */
 const useHover = () => {
 	const [isHovering, setIsHovering] = useState(false);
 	const ref: any = useRef(null);

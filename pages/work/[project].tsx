@@ -23,7 +23,6 @@ interface props {
 	}
 }
 
-
 export const getStaticPaths = () => {
 	const paths = data.map(item => ({
 		params: {

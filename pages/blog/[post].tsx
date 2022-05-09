@@ -48,7 +48,7 @@ export const getStaticProps = ({ params }: params) => {
 const Post = ({ data }: props) => {
 	return (
 		<Layout>
-			<motion.article className='my-28'>
+			<motion.article className='my-8 md:my-28'>
 			<p className='text-sm'>{data.date} - 2 min read</p>
 			<Heading>{data.name}</Heading>
 				<img src={data.url} alt="" className='w-full h-[250px] object-cover rounded mb-3' />

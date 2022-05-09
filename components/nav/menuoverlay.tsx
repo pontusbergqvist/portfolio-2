@@ -14,7 +14,7 @@ const MenuOverlay = ({ onClick }: Props) => {
 	return (
 		<div 
 			onClick={() => onClick(false)}
-			className="opacity-90 h-screen w-screen bg-light dark:bg-dark text-dark dark:text-light fixed top-[0px] right-0">
+			className="z-10 opacity-90 h-screen w-screen bg-light dark:bg-dark text-dark dark:text-light fixed top-[0px] right-0">
 		</div>
 	)
 }

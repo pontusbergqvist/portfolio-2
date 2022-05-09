@@ -6,7 +6,8 @@ interface Props {
 		url: string,
 		date: string,
 		name: string,
-		description: string
+		description: string,
+		id: number
 	},
 	home?: boolean,
 	work?: boolean,
@@ -21,17 +22,19 @@ const variants = {
 
 
 
-const Card = ({ data, home, work }: Props) => {
-	const { url, date, name, description } = data;
+const Card = ({ data, home, work, blog }: Props) => {
+	const { url, date, name, description, id } = data;
 	return (
-		<Link href={"/blog"} passHref>
+		<Link href={`/${ work ? "work" : blog && "blog" }/${id}`} passHref>
 			<motion.article whileHover="hover" className="hover:cursor-pointer h-full w-full overflow-hidden">
-				<div className="overflow-hidden h-[200px] blog:h-[150px] rounded">
+				<div className="overflow-hidden h-[150px] max-w-[270px] blog:max-w-full rounded mx-auto">
 					<motion.img variants={variants} className="align-middle h-full w-full object-cover mb-2" src={url} alt={name} />
 				</div>
-				{ !work && <p className='text-sm my-1'>{date}</p> }
-				<h3 className='text-h3'>{home ? "Bloggpost: Titel" : name}</h3>
-				<p className='my-1 text-sm'>{description}</p>
+				<div className="max-w-[290px] blog:max-w-full mx-auto my-2">
+					{ !work && <p className='text-sm my-1'>{date}</p> }
+					<h3 className='text-h3'>{home ? "Bloggpost: Titel" : name}</h3>
+					<p className='my-1 text-sm'>{description}</p>
+				</div>
 			</motion.article>
 		</Link>
 	)

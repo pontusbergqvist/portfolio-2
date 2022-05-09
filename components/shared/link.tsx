@@ -1,14 +1,18 @@
 import { default as NextLink } from 'next/link'
+import { motion } from 'framer-motion';
 
 interface Props {
 	to: string,
-	children: any;
+	children: string
 }
 
 const Link = ({ to, children }: Props) => {
 	return (
 		<NextLink scroll={false} href={to}>
-			<a className='underline text-center font-mono'>{children}</a>
+			<motion.a 
+				className='text-center underline font-mono cursor-pointer inline-block'
+				>{children}
+			</motion.a>
 		</NextLink>
 	)
 }

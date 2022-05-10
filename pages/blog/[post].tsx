@@ -2,7 +2,7 @@ import Heading from '../../components/shared/heading';
 import Layout from '../../components/layout';
 import Tags from '../../components/shared/tags';
 import { motion } from 'framer-motion';
-import { createClient, Entry, EntryCollection } from 'contentful';
+import { createClient, EntryCollection } from 'contentful';
 import { BlogEntry, Post } from '../../models/blog';
 
 
@@ -71,7 +71,7 @@ const Post = ({ post }: Props) => {
 				<img src={image.fields.file.url} alt={title} className='w-full h-[250px] object-cover rounded mb-3' />
 				<Tags tags={tags} />
 				<p className="italic my-6">{description}</p>
-				{body.content.map(item => <p className="my-3">{item.content[0].value}</p>)}
+				{body.content.map((item, index) => <p key={index} className="my-3">{item.content[0].value}</p>)}
 				<div className="flex my-5">
 					<div className="h-[75px] w-[75px] border border-accent rounded-full"></div>
 					<div className="mx-5 self-center">

@@ -1,32 +1,32 @@
 import Heading from '../../components/shared/heading';
 import Layout from '../../components/layout';
 import Tags from '../../components/shared/tags';
-import data from '../../data/data.json';
 import { motion } from 'framer-motion';
+import { createClient, Entry, EntryCollection } from 'contentful';
+import { BlogEntry, Post } from '../../models/blog';
 
 
-interface params {
+interface Params {
 	params: {
-		post: number
+		post: string
 	}
 } 
 
-interface props {
-	data: {
-		id: number,
-		name: string,
-		description: string,
-		url: string,
-		tags: string[],
-		date: string
-	}
+interface Props {
+	post: Post
 }
 
+export const getStaticPaths = async () => {
+	const client = createClient({
+		space: process.env.SPACE_ID as string,
+		accessToken: process.env.ACCESS_TOKEN as string
+	})
 
-export const getStaticPaths = () => {
-	const paths = data.map(item => ({
+	const res: EntryCollection<BlogEntry> = await client.getEntries({ content_type: 'blog' });
+
+	const paths = res.items.map(post => ({
 		params: {
-			post: item.id.toString(),
+			post: post.fields.slug 
 		}
 	})) 
 
@@ -36,31 +36,47 @@ export const getStaticPaths = () => {
 	}
 }
 
-export const getStaticProps = ({ params }: params) => {
-	const obj = data.find(item => item.id == params.post)
+export const getStaticProps = async ({ params }: Params) => {
+	const client = createClient({
+		space: process.env.SPACE_ID as string,
+		accessToken: process.env.ACCESS_TOKEN as string
+	})
+
+	const res: EntryCollection<BlogEntry> = await client.getEntries({ content_type: 'blog' });
+	const post = res.items.find(post => post.fields.slug == params.post)
+	if (post === undefined) throw new TypeError(`No entry is using the slug ${params.post}.`);
 	return {
 		props: {
-			data: obj
+			post: {
+				id: post.sys.id,
+				date: post.sys.createdAt.slice(0, 10),
+				title: post.fields.title,
+				tags: post.fields.tags,
+				description: post.fields.description,
+				image: post.fields.image,
+				body: post.fields.body,
+			} 
 	  }
 	}
 }
 
-const Post = ({ data }: props) => {
+const Post = ({ post }: Props) => {
+	const { title, description, date, body, image, tags } = post
+	console.log(post)
 	return (
 		<Layout>
 			<motion.article className='my-8 md:my-28'>
-			<p className='text-sm'>{data.date} - 2 min read</p>
-			<Heading>{data.name}</Heading>
-				<img src={data.url} alt="" className='w-full h-[250px] object-cover rounded mb-3' />
-				<Tags tags={data.tags} />
-				<p className='my-3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-				<p className='my-3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-				<p className='my-3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+				<p className='text-sm'>{date} — 2 min read</p>
+				<Heading>{title}</Heading>
+				<img src={image.fields.file.url} alt={title} className='w-full h-[250px] object-cover rounded mb-3' />
+				<Tags tags={tags} />
+				<p className="italic my-6">{description}</p>
+				{body.content.map(item => <p className="my-3">{item.content[0].value}</p>)}
 				<div className="flex my-5">
 					<div className="h-[75px] w-[75px] border border-accent rounded-full"></div>
 					<div className="mx-5 self-center">
 						<p className="mt-2">Pontus bergqvist</p>
-						<p className="text-sm">{data.date}</p>
+						<p className="text-sm">{date}</p>
 					</div>
 				</div>
 			</motion.article>

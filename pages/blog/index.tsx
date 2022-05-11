@@ -2,17 +2,12 @@ import type { NextPage } from 'next'
 import Layout from '../../components/layout';
 import Heading from '../../components/shared/heading';
 import Card from '../../components/shared/card';
-import { createClient } from 'contentful'; 
 import { Post } from '../../models/blog';
+import Contentful from '../../api/contentful';
 
 export const getStaticProps = async () => {
-	const client = createClient({
-		space: process.env.SPACE_ID as string,
-		accessToken: process.env.ACCESS_TOKEN as string
-	})
-
-	const res = await client.getEntries({ content_type: 'blog' });
-	const posts = res.items.map(item => item.fields);
+	const contentful = new Contentful();
+	const posts = await contentful.getAllBlogPosts();
 
 	return {
 		props: {
@@ -32,7 +27,7 @@ const Blog: NextPage<Posts> = ({ posts }) => {
 				<Heading>Blog</Heading>
 				<div className='grid grid-cols-1 blog:grid-cols-2 gap-8'>
 				{posts.map((post, index) => (
-					<Card blog key={index} post={post} />
+					<Card blog key={index} data={post} />
 				))} 
 				</div>
 			</div>

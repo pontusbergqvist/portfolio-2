@@ -55,18 +55,19 @@ export const getStaticProps = async ({ params }: Params) => {
 				description: post.fields.description,
 				image: post.fields.image,
 				body: post.fields.body,
+				timeToRead: post.fields.timeToRead
 			} 
 	  }
 	}
 }
 
 const Post = ({ post }: Props) => {
-	const { title, description, date, body, image, tags } = post
+	const { title, description, date, body, image, tags, timeToRead } = post
 	console.log(post)
 	return (
 		<Layout>
 			<motion.article className='my-8 md:my-28'>
-				<p className='text-sm'>{date} — 2 min read</p>
+				<p className='text-sm'>{date} — {timeToRead} min read</p>
 				<Heading>{title}</Heading>
 				<img src={image.fields.file.url} alt={title} className='w-full h-[250px] object-cover rounded mb-3' />
 				<Tags tags={tags} />

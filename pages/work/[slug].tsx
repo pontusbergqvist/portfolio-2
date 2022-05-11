@@ -1,0 +1,57 @@
+import Breadcrumbs from '../../components/shared/breadcrumbs';
+import Heading from '../../components/shared/heading';
+import Layout from '../../components/layout';
+import Tags from '../../components/shared/tags';
+import { AiFillGithub } from 'react-icons/ai'
+import { BiLinkExternal } from 'react-icons/bi'
+import { Project } from '../../models/work';
+import Contentful from '../../api/contentful';
+import { GetStaticPaths, GetStaticProps } from 'next';
+
+interface Props {
+	project: Project
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	const contentful = new Contentful();
+	const paths = await contentful.getAllProjectPaths();
+
+  return {
+		paths,
+		fallback: false
+	}
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+	const contentful = new Contentful();
+	const project = await contentful.getProject(params?.slug)
+	return {
+		props: {
+			project
+	 	}
+	}
+}
+
+const Project = ({ project }: Props) => {
+	const { title, tags, description, image, body } = project;
+
+	return (
+		<Layout>
+			<article className='my-28'>
+				<Heading>{title}</Heading>
+				<img src={image.fields.file.url} alt={title} className='w-full h-[250px] object-cover rounded' />
+				<Breadcrumbs current={title} />
+				<br />
+				<Tags tags={tags} />
+				<p className="my-5">{description}</p>
+				{body.content.map((item, index) => <p key={index} className="my-3">{item.content[0].value}</p>)}
+				<div className='flex text-h2 -ml-1'>
+					<AiFillGithub className='mx-1 cursor-pointer hover:text-accent'/> 
+					<BiLinkExternal className='mx-1 cursor-pointer hover:text-accent'/>
+				</div>
+			</article>
+		</Layout>
+	)
+}
+
+export default Project;

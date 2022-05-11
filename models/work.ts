@@ -1,3 +1,4 @@
+
 interface File {
 	url: string
 }
@@ -22,26 +23,32 @@ interface Body {
 	content: Content[]
 }
 
-interface PostFields {
+interface WorkFields {
 	title: string,
 	description: string,
 	image: Image
 	slug: string,
 	tags: string[],
 	body: Body,
-	timeToRead: number
+	date?: string
 }
 
 interface Sys {
-	createdAt: string,
 	id: string
 }
 
-export interface BlogEntry extends PostFields {
+export interface WorkEntry extends WorkFields {
 	sys: Sys,
 }
 
-export interface Post extends PostFields {
+export interface Project extends WorkFields {
 	id: string
-	date: string,
+}
+
+export interface WorkParam {
+	project: string;
+}
+
+export interface BlogParam {
+	post: string;
 }

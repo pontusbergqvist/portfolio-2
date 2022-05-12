@@ -38,7 +38,7 @@ const Project = ({ project }: Props) => {
 
 	return (
 		<Layout>
-			<article className='my-28'>
+			<article className='my-8 md:my-28'>
 				<Heading>{title}</Heading>
 				<img src={image.fields.file.url} alt={title} className='mt-4 w-full h-[250px] object-cover rounded' />
 				<Breadcrumbs current={title} />

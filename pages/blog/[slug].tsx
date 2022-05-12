@@ -1,9 +1,8 @@
-import Heading from '../../components/shared/heading';
 import Layout from '../../components/layout';
+import Heading from '../../components/shared/heading';
 import Tags from '../../components/shared/tags';
+import { Post } from '../../models/blog';
 import { motion } from 'framer-motion';
-import { createClient, EntryCollection } from 'contentful';
-import { BlogEntry, Post } from '../../models/blog';
 import Contentful from '../../api/contentful';
 
 
@@ -53,7 +52,7 @@ const Post = ({ post }: Props) => {
 					<div className="h-[75px] w-[75px] border border-accent rounded-full"></div>
 					<div className="mx-5 self-center">
 						<p className="mt-2">Pontus bergqvist</p>
-						<p className="text-sm">{date}</p>
+						<p className="text-sm">{date.slice(0, 10)}</p>
 					</div>
 				</div>
 			</motion.article>

@@ -8,7 +8,7 @@ interface Props {
 
 const Link = ({ to, children }: Props) => {
 	return (
-		<NextLink scroll={false} href={to}>
+		<NextLink scroll={false} href={to} passHref>
 			<motion.a 
 				className='text-center underline font-mono cursor-pointer inline-block'
 				>{children}

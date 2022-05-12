@@ -21,11 +21,11 @@ interface Projects {
 }
 
 const Work: NextPage<Projects> = ({ projects }) => {
-	console.log(projects)
 	return (
 		<Layout>
 			<div className='my-8 md:my-28 max-w-[290px] blog:max-w-full mx-auto'>
 				<Heading>Work</Heading>
+				<p className='text-sm mt-2 mb-5'>Featured projects</p>
 				<div className='grid grid-cols-1 blog:grid-cols-2 gap-8'>
 					{projects.map(project => <Card work key={project.id} data={project} />)}
 				</div>

@@ -7,6 +7,7 @@ import { BiLinkExternal } from 'react-icons/bi'
 import { Project } from '../../models/work';
 import Contentful from '../../api/contentful';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { motion } from 'framer-motion';
 
 interface Props {
 	project: Project
@@ -33,21 +34,33 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const Project = ({ project }: Props) => {
-	const { title, tags, description, image, body } = project;
+	const { title, tags, description, image, body, externalLink, github } = project;
 
 	return (
 		<Layout>
 			<article className='my-28'>
 				<Heading>{title}</Heading>
-				<img src={image.fields.file.url} alt={title} className='w-full h-[250px] object-cover rounded' />
+				<img src={image.fields.file.url} alt={title} className='mt-4 w-full h-[250px] object-cover rounded' />
 				<Breadcrumbs current={title} />
 				<br />
 				<Tags tags={tags} />
 				<p className="my-5">{description}</p>
 				{body.content.map((item, index) => <p key={index} className="my-3">{item.content[0].value}</p>)}
 				<div className='flex text-h2 -ml-1'>
-					<AiFillGithub className='mx-1 cursor-pointer hover:text-accent'/> 
-					<BiLinkExternal className='mx-1 cursor-pointer hover:text-accent'/>
+				{github && (
+					<motion.div className='px-1 cursor-pointer hover:text-accent' whileHover={{ scale: 1.2 }}>
+						<a href={github} target="_blank" rel="noreferrer">
+							<AiFillGithub /> 
+						</a>
+					</motion.div>
+				)}
+				{externalLink && (
+					<motion.div className='px-1 cursor-pointer hover:text-accent' whileHover={{ scale: 1.2 }}>
+						<a href={externalLink} target="_blank" rel="noreferrer">
+							<BiLinkExternal />
+						</a>
+					</motion.div>
+				)}
 				</div>
 			</article>
 		</Layout>

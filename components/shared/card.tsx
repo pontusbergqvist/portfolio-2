@@ -25,7 +25,7 @@ const Card = ({ data, work }: Props) => {
 	return (
 		<Link href={`/${ work ? "work" : "blog" }/${slug}`} passHref scroll={false}>
 			<motion.article whileHover="hover" className="hover:cursor-pointer h-full w-full overflow-hidden">
-				<div className="overflow-hidden h-[150px] max-w-[270px] blog:max-w-full rounded mx-auto">
+				<div className="overflow-hidden max-w-[290px] h-[150px] rounded mx-auto">
 					<motion.img 
 						variants={variants} 
 						className="align-middle h-full w-full object-cover mb-2" 

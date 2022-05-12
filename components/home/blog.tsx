@@ -10,7 +10,7 @@ interface Props {
 
 const Blog = ({ posts }: Props) => {
 	return (
-		<section className="my-14 flex flex-col ">
+		<section className="my-8 flex flex-col ">
 			<div>
 				<Heading>Blog</Heading>
 			</div>

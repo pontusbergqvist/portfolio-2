@@ -27,10 +27,12 @@ interface WorkFields {
 	title: string,
 	description: string,
 	image: Image
-	slug: string,
-	tags: string[],
-	body: Body,
+	slug: string
+	tags: string[]
+	body: Body
 	date?: string
+	externalLink?: string
+	github?: string
 }
 
 interface Sys {

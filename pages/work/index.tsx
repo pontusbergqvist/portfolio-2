@@ -27,6 +27,14 @@ const Work: NextPage<Projects> = ({ projects }) => {
 				<Heading>Work</Heading>
 				<p className='text-sm mt-2 mb-5'>Featured projects</p>
 				<div className='grid grid-cols-1 blog:grid-cols-2 gap-8'>
+					<article className="h-full w-full overflow-hidden order-last md:order-none">
+						<div className="max-w-[290px] h-[150px] rounded bg-item-light dark:bg-item-dark mx-auto">
+						</div>
+						<div className="max-w-[290px] blog:max-w-full mx-auto my-2">
+							<h3 className='text-h3'>Ecommerce</h3>
+							<p className='my-1 text-sm'>Coming soon™</p>
+						</div>
+					</article>
 					{projects.map(project => <WorkCard key={project.id} project={project} />)}
 				</div>
 			</div>

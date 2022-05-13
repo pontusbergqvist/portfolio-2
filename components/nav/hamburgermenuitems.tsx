@@ -31,14 +31,14 @@ const HamburgerMenuItems = () => {
 
 	return (
 		<motion.ul variants={container} initial="init" animate="enter" className="fixed z-10 right-0 top-[80px] flex flex-col text-right pt-3 px-5">
-				<motion.li variants={item} className={`${router.pathname === "/" ? "text-accent": ""} my-3`}>
-					<Link href="/"><a>home</a></Link>
+				<motion.li variants={item} className={`${router.pathname === "/" ? "text-accent": ""} py-3`}>
+					<Link href="/"><a className="py-3">home</a></Link>
 				</motion.li>
-				<motion.li variants={item} className={`${router.pathname === "/work" ? "text-accent": ""} my-3`}>
-					<Link href="/work"><a className="">work</a></Link>
+				<motion.li variants={item} className={`${router.pathname === "/work" ? "text-accent": ""} py-3`}>
+					<Link href="/work"><a className="py-3">work</a></Link>
 				</motion.li>
-				<motion.li variants={item} className={`${router.pathname === "/blog" ? "text-accent": ""} my-3`}>
-					<Link href="/blog"><a className="">blog</a></Link>
+				<motion.li variants={item} className={`${router.pathname === "/blog" ? "text-accent": ""} py-3`}>
+					<Link href="/blog"><a className="py-3">blog</a></Link>
 				</motion.li>
 			<motion.li 
 				variants={item}

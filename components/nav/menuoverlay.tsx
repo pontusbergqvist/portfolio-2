@@ -5,7 +5,6 @@ interface Props {
 }
 
 const MenuOverlay = ({ onClick }: Props) => {
-
 	useEffect(() => {
 		document.body.classList.add('overflow-hidden');
 		return () => document.body.classList.remove('overflow-hidden');

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Post } from '../../models/blog';
-import { Project } from '../../models/work';
 
 const variants = {
 	hover: {
@@ -13,18 +12,15 @@ const variants = {
 }
 
 interface Props {
-	data: Post | Project,
-	work?: boolean,
-	blog?: boolean
+	post: Post
 }
 
-const Card = ({ data, work }: Props) => {
-	const { title, image, description, date, slug } = data;
-
+const BlogCard = ({ post }: Props) => {
+	const { title, image, description, slug, date } = post;
 
 	return (
-		<Link href={`/${ work ? "work" : "blog" }/${slug}`} passHref scroll={false}>
-			<motion.article whileHover="hover" className="hover:cursor-pointer h-full w-full overflow-hidden">
+		<Link href={`/blog/${slug}`} passHref scroll={false}>
+			<motion.article whileHover="hover" className="cursor-pointer h-full w-full overflow-hidden">
 				<div className="overflow-hidden max-w-[290px] h-[150px] rounded mx-auto">
 					<motion.img 
 						variants={variants} 
@@ -32,7 +28,7 @@ const Card = ({ data, work }: Props) => {
 						src={image.fields.file.url} alt={title} />
 				</div>
 				<div className="max-w-[290px] blog:max-w-full mx-auto my-2">
-					{ !work && <p className='text-sm my-1'>{date?.slice(0, 10)}</p> }
+					{date.slice(0, 10)}
 					<h3 className='text-h3'>{title}</h3>
 					<p className='my-1 text-sm'>{description}</p>
 				</div>
@@ -41,5 +37,5 @@ const Card = ({ data, work }: Props) => {
 	)
 }
 
-export default Card;
+export default BlogCard;
 

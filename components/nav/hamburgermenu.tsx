@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
 import MenuOverlay from './menuoverlay';
-import { AnimatePresence, motion } from 'framer-motion';
 import HamburgerMenuItems from './hamburgermenuitems';
 import useWindowWidth from '../../hooks/useWindowWidth';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 const variants = {
@@ -29,7 +29,7 @@ const HamburgerMenu = () => {
 	return (
 		<>
 		<div className="cursor-pointer overflow-hidden z-20 fixed md:hidden right-0 mr-3 bg-accent p-2 w-[50px] h-[40px] rounded overflow-x-hidden" onClick={() => setOpen(!open)}>
-			<AnimatePresence initial={false} exitBeforeEnter onExitComplete={() => scrollTo(0, 0)}>
+			<AnimatePresence initial={false} exitBeforeEnter>
 				<motion.div 
 					key={open ? "open" : "closed"} 
 					variants={variants} 

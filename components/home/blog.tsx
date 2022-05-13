@@ -1,6 +1,6 @@
 import Heading from '../shared/heading';
 import Link from '../shared/link';
-import Card from '../shared/card';
+import BlogCard from '../shared/blogcard';
 import { Post } from '../../models/blog';
 
 interface Props {
@@ -15,7 +15,7 @@ const Blog = ({ posts }: Props) => {
 				<Heading>Blog</Heading>
 			</div>
 			<div className="grid w-full mx-auto grid-cols-1 blog:grid-cols-2 gap-8 my-4">
-				{posts.map((post, index) => index < 2 && <Card blog key={index} data={post}/>)}
+				{posts.map((post, index) => index < 2 && <BlogCard key={index} post={post}/>)}
 			</div>
 			<Link to="/blog">View posts</Link>
 		</section>

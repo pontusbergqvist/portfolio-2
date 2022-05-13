@@ -1,8 +1,8 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 const container = {
 	init: {

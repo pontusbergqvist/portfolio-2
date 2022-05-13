@@ -1,6 +1,6 @@
+import useSsr from '../../hooks/useSsr';
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
 import { useTheme } from 'next-themes';
-import useSsr from '../../hooks/useSsr';
 
 
 const ThemeButton = () => {

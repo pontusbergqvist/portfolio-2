@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Layout from '../../components/layout';
 import Heading from '../../components/shared/heading';
-import Card from '../../components/shared/card';
+import BlogCard from '../../components/shared/blogcard';
 import { Post } from '../../models/blog';
 import Contentful from '../../api/contentful';
 
@@ -27,9 +27,7 @@ const Blog: NextPage<Posts> = ({ posts }) => {
 				<Heading>Blog</Heading>
 				<p className="mb-5 mt-2 text-sm">Latest posts</p>
 				<div className='grid grid-cols-1 blog:grid-cols-2 gap-8'>
-				{posts.map((post, index) => (
-					<Card blog key={index} data={post} />
-				))} 
+				{posts.map((post, index) => <BlogCard key={index} post={post} />)} 
 				</div>
 			</div>
 		</Layout>

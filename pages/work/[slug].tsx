@@ -2,12 +2,18 @@ import Breadcrumbs from '../../components/shared/breadcrumbs';
 import Heading from '../../components/shared/heading';
 import Layout from '../../components/layout';
 import Tags from '../../components/shared/tags';
+import Contentful from '../../api/contentful';
+import { Project } from '../../models/work';
 import { AiFillGithub } from 'react-icons/ai'
 import { BiLinkExternal } from 'react-icons/bi'
-import { Project } from '../../models/work';
-import Contentful from '../../api/contentful';
-import { GetStaticPaths, GetStaticProps } from 'next';
 import { motion } from 'framer-motion';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { ParsedUrlQuery } from 'querystring';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
+interface Params extends ParsedUrlQuery {
+	slug: string;
+}
 
 interface Props {
 	project: Project
@@ -23,9 +29,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	}
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
 	const contentful = new Contentful();
-	const project = await contentful.getProject(params?.slug)
+	const project = await contentful.getProject(params!.slug)
 	return {
 		props: {
 			project
@@ -45,7 +51,7 @@ const Project = ({ project }: Props) => {
 				<br />
 				<Tags tags={tags} />
 				<p className="my-5">{description}</p>
-				{body.content.map((item, index) => <p key={index} className="my-3">{item.content[0].value}</p>)}
+				{documentToReactComponents(body)}
 				<div className='flex text-h2 -ml-1'>
 				{github && (
 					<motion.div className='px-1 cursor-pointer hover:text-accent' whileHover={{ scale: 1.2 }}>

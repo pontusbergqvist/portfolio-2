@@ -1,47 +1,14 @@
-interface File {
-	url: string
-}
+import { Asset, EntryFields } from "contentful"
+import { Document } from '@contentful/rich-text-types';
 
-interface ImageFields {
-	file: File
-}
-
-interface Image {
-	fields: ImageFields,
-}
-
-interface ItemContent {
-	value: string
-}
-
-interface Content {
-	content: ItemContent[]
-}
-
-interface Body {
-	content: Content[]
-}
-
-interface PostFields {
-	title: string,
-	description: string,
-	image: Image
-	slug: string,
-	tags: string[],
-	body: Body,
-	timeToRead: number
-}
-
-interface Sys {
-	createdAt: string,
-	id: string
-}
-
-export interface BlogEntry extends PostFields {
-	sys: Sys,
-}
-
-export interface Post extends PostFields {
-	id: string
-	date: string,
+export interface Post {
+	title: EntryFields.Text;
+	description: EntryFields.Text;
+	slug: EntryFields.Text;
+	timeToRead: EntryFields.Number;
+	image: Asset;
+	body: Document;
+	id: string;
+	date: string;
+	tags: string[];
 }

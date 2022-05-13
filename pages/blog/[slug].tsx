@@ -1,22 +1,23 @@
 import Layout from '../../components/layout';
 import Heading from '../../components/shared/heading';
 import Tags from '../../components/shared/tags';
+import Contentful from '../../api/contentful';
 import { Post } from '../../models/blog';
 import { motion } from 'framer-motion';
-import Contentful from '../../api/contentful';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { ParsedUrlQuery } from 'querystring';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 
-interface Params {
-	params: {
-		slug: string
-	}
+interface Params extends ParsedUrlQuery {
+	slug: string
 } 
 
 interface Props {
 	post: Post
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
 	const contentful = new Contentful;
 	const paths = await contentful.getAllBlogPaths();
 
@@ -26,9 +27,9 @@ export const getStaticPaths = async () => {
 	}
 }
 
-export const getStaticProps = async ({ params }: Params) => {
+export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
 	const contentful = new Contentful();
-	const post = await contentful.getPost(params.slug); 
+	const post = await contentful.getPost(params!.slug); 
 
 	return {
 		props: {
@@ -47,7 +48,7 @@ const Post = ({ post }: Props) => {
 				<img src={image.fields.file.url} alt={title} className='mt-4 w-full h-[250px] object-cover rounded mb-3' />
 				<Tags tags={tags} />
 				<p className="italic my-6">{description}</p>
-				{body.content.map((item, index) => <p key={index} className="my-3">{item.content[0].value}</p>)}
+				{documentToReactComponents(body)}
 				<div className="flex my-5">
 					<div className="h-[75px] w-[75px] border border-accent rounded-full"></div>
 					<div className="mx-5 self-center">

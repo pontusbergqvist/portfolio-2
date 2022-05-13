@@ -1,11 +1,11 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Layout from '../../components/layout';
 import Heading from '../../components/shared/heading';
 import BlogCard from '../../components/shared/blogcard';
-import { Post } from '../../models/blog';
 import Contentful from '../../api/contentful';
+import { Post } from '../../models/blog';
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const contentful = new Contentful();
 	const posts = await contentful.getAllBlogPosts();
 

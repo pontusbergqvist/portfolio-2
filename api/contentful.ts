@@ -1,6 +1,6 @@
 import { ContentfulClientApi, createClient, EntryCollection } from 'contentful';
-import { BlogEntry, Post } from '../models/blog';
-import { WorkEntry, Project } from '../models/work';
+import { Post } from '../models/blog';
+import { Project } from '../models/work';
 
 export default class Contentful {
 	client: ContentfulClientApi;
@@ -13,48 +13,37 @@ export default class Contentful {
 	}
 
 	async getAllBlogPosts(): Promise<Post[]> {
-		const res: EntryCollection<BlogEntry> = await this.client.getEntries({ content_type: 'blog' });
-		return res.items.map(post => {
-			const { title, slug, description, tags, image, body, timeToRead } = post.fields;
-			const { id, createdAt } = post.sys;
+		const collection: EntryCollection<Post> = await this.client.getEntries({ content_type: 'blog' });
+		return collection.items.map(entry => {
+			const { title, slug, description, tags, image, body, timeToRead } = entry.fields;
+			const { id, createdAt } = entry.sys;
 			return { id, title, slug, tags, description, image, body, date: createdAt, timeToRead } 
 		})
 	}
 
 	async getAllProjects(): Promise<Project[]> {
-		const res: EntryCollection<WorkEntry> = await this.client.getEntries({ content_type: 'work' });
-		return res.items.map(project => {
-			const { title, slug, tags, description, image, body } = project.fields;
-			return { id: project.sys.id, title, slug, tags, description, image, body }
+		const collection: EntryCollection<Project> = await this.client.getEntries({ content_type: 'work' });
+		return collection.items.map(entry => {
+			const { title, slug, tags, description, image, body } = entry.fields;
+			return { id: entry.sys.id, title, slug, tags, description, image, body }
 		});
 	}
 
-	async getAllProjectPaths() {
-		const res: EntryCollection<WorkEntry> = await this.client.getEntries({ content_type: 'work' });
-		return res.items.map(item => ({
-			params: {
-				slug: item.fields.slug
-			}
-		})) 
+	async getAllProjectPaths(): Promise<any> {
+		const collection: EntryCollection<Project> = await this.client.getEntries({ content_type: 'work' });
+		return collection.items.map(entry => ({ params: { slug: entry.fields.slug }}));
 	}
 
-	async getAllBlogPaths() {
-		const res: EntryCollection<BlogEntry> = await this.client.getEntries({ content_type: 'blog' });
-		return res.items.map(item => ({
-			params: {
-				slug: item.fields.slug
-			}
-		})) 
+	async getAllBlogPaths(): Promise<any> {
+		const collection: EntryCollection<Post> = await this.client.getEntries({ content_type: 'blog' });
+		return collection.items.map(entry => ({ params: { slug: entry.fields.slug} }));
 	}
 
-
-	// todo: these input types are very ugly, might fix these soon™.. (slug should only be a string)
-	// https://github.com/vercel/next.js/discussions/16522
-	async getProject(slug: string | string[] | undefined): Promise<Project> {
-		const res: EntryCollection<WorkEntry> = await this.client.getEntries({ content_type: 'work' });
-		const project = res.items.find(project => project.fields.slug == slug);
+	async getProject(slug: string): Promise<Project> {
+		const collection: EntryCollection<Project> = await this.client.getEntries({ content_type: 'work' });
+		const project = collection.items.find(entry => entry.fields.slug == slug);
 		if (!project) {
-			throw new TypeError(`No entry is using the slug ${slug}.`)
+			throw new TypeError(`Couldn't find any entries using slug ${slug}`)
 		} else {
 			const { title, slug, tags, description, image, body } = project.fields;
 			return {
@@ -71,11 +60,11 @@ export default class Contentful {
 		}
 	}
 
-	async getPost(slug: string | string[] | undefined): Promise<Post> {
-		const res: EntryCollection<BlogEntry> = await this.client.getEntries({ content_type: 'blog' });
-		const post = res.items.find(post => post.fields.slug == slug);
+	async getPost(slug: string): Promise<Post> {
+		const collection: EntryCollection<Post> = await this.client.getEntries({ content_type: 'blog' });
+		const post = collection.items.find(entry => entry.fields.slug == slug);
 		if (!post) {
-			throw new TypeError(`No entry is using the slug ${slug}.`)
+			throw new TypeError(`Couldn't find any entries using slug ${slug}`)
 		} else {
 			const { title, slug, tags, description, image, body, timeToRead } = post.fields
 			const { id, createdAt } = post.sys;

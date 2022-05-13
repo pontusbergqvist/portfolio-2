@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes';
 import Nav from '../components/nav';
-import usePageTransition from '../hooks/useTransitionDirection';
+import usePageTransition from '../hooks/usePageTransition';
 import { AnimatePresence, motion } from 'framer-motion';
 import useWindowWidth from '../hooks/useWindowWidth';
 

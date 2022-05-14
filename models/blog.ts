@@ -12,3 +12,8 @@ export interface Post {
 	date: string;
 	tags: string[];
 }
+
+export interface AdjacentPostData {
+	title: EntryFields.Text;
+	slug: EntryFields.Text;
+}

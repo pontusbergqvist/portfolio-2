@@ -5,6 +5,7 @@ import Nav from '../components/nav';
 import usePageTransition from '../hooks/usePageTransition';
 import { AnimatePresence, motion } from 'framer-motion';
 import useWindowWidth from '../hooks/useWindowWidth';
+import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
 	const direction = usePageTransition(router.route);
@@ -31,6 +32,10 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 			}
 		},
 	}
+
+	useEffect(() => {
+		console.log(direction)
+	}, [direction])
 
 	return (
 		<ThemeProvider attribute='class' defaultTheme='light'>

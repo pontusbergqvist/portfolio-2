@@ -1,8 +1,9 @@
 import Layout from '../../components/layout';
 import Heading from '../../components/shared/heading';
 import Tags from '../../components/shared/tags';
+import Button from '../../components/shared/button';
 import Contentful from '../../api/contentful';
-import { Post } from '../../models/blog';
+import { AdjacentPostData, Post } from '../../models/blog';
 import { motion } from 'framer-motion';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
@@ -10,11 +11,13 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 
 interface Params extends ParsedUrlQuery {
-	slug: string
+	slug: string;
 } 
 
 interface Props {
-	post: Post
+	post: Post;
+	nextPost: AdjacentPostData | null;
+	previousPost: AdjacentPostData | null;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -30,17 +33,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
 	const contentful = new Contentful();
 	const post = await contentful.getPost(params!.slug); 
+	const nextPost = await contentful.getNextPost(post);
+	const previousPost = await contentful.getPreviousPost(post);
 
 	return {
 		props: {
-			post
+			post,
+			nextPost,
+			previousPost
 	  },
 		revalidate: 10
 	}
 }
 
-const Post = ({ post }: Props) => {
+const Post = ({ post, nextPost, previousPost }: Props) => {
 	const { title, description, date, body, image, tags, timeToRead } = post
+
 	return (
 		<Layout>
 			<motion.article className='my-8 md:my-28'>
@@ -56,6 +64,10 @@ const Post = ({ post }: Props) => {
 						<p className="mt-2">Pontus bergqvist</p>
 						<p className="text-sm">{date.slice(0, 10)}</p>
 					</div>
+				</div>
+				<div className="w-full flex justify-between my-16">
+					<Button type="previous" route="/blog" data={previousPost} />
+					<Button type="next" route="/blog" data={nextPost} />
 				</div>
 			</motion.article>
 		</Layout>

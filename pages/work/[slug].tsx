@@ -2,6 +2,7 @@ import Breadcrumbs from '../../components/shared/breadcrumbs';
 import Heading from '../../components/shared/heading';
 import Layout from '../../components/layout';
 import Tags from '../../components/shared/tags';
+import Button from '../../components/shared/button'
 import Contentful from '../../api/contentful';
 import { Project } from '../../models/work';
 import { AiFillGithub } from 'react-icons/ai'
@@ -10,13 +11,16 @@ import { motion } from 'framer-motion';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { AdjacentPostData } from '../../models/blog';
 
 interface Params extends ParsedUrlQuery {
 	slug: string;
 }
 
 interface Props {
-	project: Project
+	project: Project;
+	nextProject: AdjacentPostData | null;
+	previousProject: AdjacentPostData | null;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -32,15 +36,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
 	const contentful = new Contentful();
 	const project = await contentful.getProject(params!.slug)
+	const nextProject = await contentful.getNextProject(project);
+	const previousProject = await contentful.getPreviousProject(project);
+
 	return {
 		props: {
-			project
+			project,
+			nextProject,
+			previousProject
 	 	}, 
 		revalidate: 10
 	}
 }
 
-const Project = ({ project }: Props) => {
+const Project = ({ project, nextProject, previousProject }: Props) => {
 	const { title, tags, description, image, body, externalLink, github } = project;
 
 	return (
@@ -68,6 +77,10 @@ const Project = ({ project }: Props) => {
 						</a>
 					</motion.div>
 				)}
+				</div>
+				<div className="w-full flex justify-between my-16">
+					<Button type="previous" route="/work" data={previousProject} />
+					<Button type="next" route="/work" data={nextProject} />
 				</div>
 			</article>
 		</Layout>

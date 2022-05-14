@@ -1,5 +1,5 @@
 import { ContentfulClientApi, createClient, EntryCollection } from 'contentful';
-import { Post } from '../models/blog';
+import { Post, AdjacentPostData } from '../models/blog';
 import { Project } from '../models/work';
 
 export default class Contentful {
@@ -70,5 +70,33 @@ export default class Contentful {
 			const { id, createdAt } = post.sys;
 			return { id, title, slug, tags, description, image, body, date: createdAt, timeToRead } 
 		}
+	}
+
+	async getNextPost(post: Post): Promise<AdjacentPostData | null> {
+		const collection: EntryCollection<Post> = await this.client.getEntries({ content_type: 'blog' });
+		const items = collection.items.map(post => post.fields.slug);
+		const nextPost = collection.items[items.indexOf(post.slug) + 1] || null;
+		return nextPost ? { title: nextPost.fields.title, slug: nextPost.fields.slug } : nextPost;
+	}
+
+	async getPreviousPost(post: Post): Promise<AdjacentPostData | null> {
+		const collection: EntryCollection<Post> = await this.client.getEntries({ content_type: 'blog' });
+		const items = collection.items.map(post => post.fields.slug);
+		const previousPost = collection.items[items.indexOf(post.slug) - 1] || null;
+		return previousPost ? { title: previousPost.fields.title, slug: previousPost.fields.slug } : previousPost;
+	}
+
+	async getNextProject(project: Project): Promise<AdjacentPostData | null> {
+		const collection: EntryCollection<Project> = await this.client.getEntries({ content_type: 'work' });
+		const items = collection.items.map(project => project.fields.slug);
+		const nextProject = collection.items[items.indexOf(project.slug) + 1] || null;
+		return nextProject ? { title: nextProject.fields.title, slug: nextProject.fields.slug } : nextProject;
+	}
+
+	async getPreviousProject(project: Project): Promise<AdjacentPostData | null> {
+		const collection: EntryCollection<Project> = await this.client.getEntries({ content_type: 'work' });
+		const items = collection.items.map(post => post.fields.slug);
+		const previousProject = collection.items[items.indexOf(project.slug) - 1] || null;
+		return previousProject ? { title: previousProject.fields.title, slug: previousProject.fields.slug } : previousProject;
 	}
 }

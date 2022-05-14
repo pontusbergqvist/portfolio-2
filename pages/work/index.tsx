@@ -1,7 +1,7 @@
 import Layout from '../../components/layout';
 import type { GetStaticProps, NextPage } from 'next';
 import Heading from '../../components/shared/heading';
-import WorkCard from '../../components/shared/workcard';
+import WorkCard from '../../components/cards/workcard';
 import Contentful from '../../api/contentful';
 import { Project } from '../../models/work';
 

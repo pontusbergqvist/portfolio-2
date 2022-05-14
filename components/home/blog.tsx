@@ -1,6 +1,6 @@
 import Heading from '../shared/heading';
 import Link from '../shared/link';
-import BlogCard from '../shared/blogcard';
+import BlogCard from '../cards/blogcard';
 import { Post } from '../../models/blog';
 
 interface Props {

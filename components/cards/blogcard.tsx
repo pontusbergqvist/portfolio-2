@@ -1,15 +1,8 @@
 import Link from 'next/link';
+import Thumbnail from './thumbnail';
 import { motion } from 'framer-motion';
 import { Post } from '../../models/blog';
 
-const variants = {
-	hover: {
-		scale: 1.1,
-		transition: {
-			duration: .4			
-	 	}
-	}
-}
 
 interface Props {
 	post: Post
@@ -21,12 +14,7 @@ const BlogCard = ({ post }: Props) => {
 	return (
 		<Link href={`/blog/${slug}`} passHref scroll={false}>
 			<motion.article whileHover="hover" className="cursor-pointer h-full w-full overflow-hidden">
-				<div className="overflow-hidden max-w-[290px] h-[150px] rounded mx-auto">
-					<motion.img 
-						variants={variants} 
-						className="align-middle h-full w-full object-cover mb-2" 
-						src={image.fields.file.url} alt={title} />
-				</div>
+				<Thumbnail src={image.fields.file.url} alt={title} />
 				<div className="max-w-[290px] blog:max-w-full mx-auto my-2">
 					<p className="text-sm">{date.slice(0, 10)}</p>
 					<h3>{title}</h3>

@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Layout from '../../components/layout';
 import Heading from '../../components/shared/heading';
-import BlogCard from '../../components/shared/blogcard';
+import BlogCard from '../../components/cards/blogcard';
 import Contentful from '../../api/contentful';
 import { Post } from '../../models/blog';
 

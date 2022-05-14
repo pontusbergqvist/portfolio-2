@@ -29,7 +29,7 @@ const BlogCard = ({ post }: Props) => {
 				</div>
 				<div className="max-w-[290px] blog:max-w-full mx-auto my-2">
 					<p className="text-sm">{date.slice(0, 10)}</p>
-					<h3 className='text-h3'>{title}</h3>
+					<h3>{title}</h3>
 					<p className='my-1 text-sm'>{description}</p>
 				</div>
 			</motion.article>

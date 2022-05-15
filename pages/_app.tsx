@@ -1,11 +1,11 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { ThemeProvider } from 'next-themes';
 import Nav from '../components/nav';
 import usePageTransition from '../hooks/usePageTransition';
-import { AnimatePresence, motion } from 'framer-motion';
 import useWindowWidth from '../hooks/useWindowWidth';
-import getVariants from '../utils/variants';
+import { ThemeProvider } from 'next-themes';
+import { AnimatePresence, motion } from 'framer-motion';
+import { getVariants } from '../utils/variants';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
 	const direction = usePageTransition(router.route);

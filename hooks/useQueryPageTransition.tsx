@@ -1,13 +1,12 @@
 import { useEffect, useRef } from 'react';
 import useQuery from './useQuery';
 
-
 /**
- * Like usePageTransition this uses an array to create a transition hierarchy between post, nextPost and previousPost using the array indexing.
- * @param {string} post, nextPost, previousPost - key for respective query page, currently only using slugs as the unique identifier.
+ * This uses an array to create an hierarcy between the items inside the input array. This hierarchy decides which direction the animation uses. The only use case for this is for next/previous buttons. 
+ * @param {string} pages - An array of possible query routes from a query page. The array should be formatted [previous, current, next]
+ * @returns {string} returns a string to be used as a condition in the variants object for the framer motion element.
  */
-const usePageTransition = (post: string, next: string | undefined, previous: string | undefined): string => {
-	const pages = [previous, post, next];
+const usePageTransition = (pages: string[]): string => {
 	const ref = useRef<string | undefined>();
 	const query = useQuery();
 
@@ -16,7 +15,7 @@ const usePageTransition = (post: string, next: string | undefined, previous: str
 	}, [query])
 
 	if (!ref.current) return 'rtl';
-	return pages.indexOf(post) > pages.indexOf(ref.current) ? 'ltr' : 'rtl';
+	return 2 > pages.indexOf(ref.current) ? 'ltr' : 'rtl';
 }
 
 export default usePageTransition;

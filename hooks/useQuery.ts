@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
+/** 
+* @returns {string} - if current page is a query route, return the slug else return empty string
+*/
+
 const useQuery = (): string => {
 	const router = useRouter();
 	const [route, setRoute] = useState("");

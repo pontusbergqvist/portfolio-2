@@ -5,37 +5,12 @@ import Nav from '../components/nav';
 import usePageTransition from '../hooks/usePageTransition';
 import { AnimatePresence, motion } from 'framer-motion';
 import useWindowWidth from '../hooks/useWindowWidth';
-import { useEffect } from 'react';
+import getVariants from '../utils/variants';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
 	const direction = usePageTransition(router.route);
 	const windowWidth = useWindowWidth();
-
-	const variants = {
-		initial: (direction: string) => {
-			return {
-				x: direction === 'ltr' ? windowWidth ? 300 : -300: -300,
-				opacity: 0,
-				transition: { duration: .2 }
-			}
-		},
-		enter: {
-			x: 0,
-			y: 0,
-			opacity: 1,
-		},
-		exit: (direction: string) => {
-			return {
-				x: direction === 'ltr' ? windowWidth ? -300 : 300 : 300,
-				opacity: 0,
-				transition: { type: 'tween', duration: .2 }
-			}
-		},
-	}
-
-	useEffect(() => {
-		console.log(direction)
-	}, [direction])
+	const variant = getVariants(windowWidth);
 
 	return (
 		<ThemeProvider attribute='class' defaultTheme='light'>
@@ -44,7 +19,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 					<Nav />
 					<AnimatePresence exitBeforeEnter initial={false} custom={direction} onExitComplete={() => scrollTo(0, 0)}>
 						<motion.div
-							variants={variants} 
+							variants={variant} 
 							initial="initial" 
 							animate="enter" 
 							exit={"exit"}

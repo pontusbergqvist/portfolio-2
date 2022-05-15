@@ -10,7 +10,7 @@ interface Props {
 
 const Button = ({ data, type, route }: Props) => {
 	return data ? (
-		<Link href={`${route}/${data.slug}`} passHref>
+		<Link href={`${route}/${data.slug}`} passHref scroll={false}>
 			<motion.div 
 				whileHover={{ scale: 1.01, boxShadow: '1px 1px #1E273B' }}
 				className={`border border-dark dark:border-light rounded p-2 w-[230px] mr-2 cursor-pointer

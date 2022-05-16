@@ -8,10 +8,11 @@ interface Props {
 
 const MenuItem = ({ route }: Props) => {
 	const router = useRouter();
+	const slug = router.query?.slug || "";
 
 	return (
 		<motion.li 
-		className={`${router.route === route ? "text-light dark:text-dark" : ""} rounded px-2 z-10 flex items-center h-full`}
+		className={`${`${router.route.slice(0, 5)}/${slug}` === `${route}/${slug}` ? "text-light dark:text-dark" : ""} rounded px-2 z-10 flex items-center h-`}
 		>
 			<Link href={route}><a className="p-1 px-2">{route === "/" ? "home" : route.slice(1)}</a></Link>
 		</motion.li>

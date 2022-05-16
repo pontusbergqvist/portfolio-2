@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const MenuItems = () => {
 	const router = useRouter();
 	const [position, setPosition] = useState(0);
-	const [translate, setTranslate] = useState("")
+	const [translate, setTranslate] = useState("0%")
 
 	useEffect(() => {
 			if (router.route === "/") {

@@ -2,11 +2,13 @@ import MenuItem from "./menuitem";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { getValues } from '../../utils/nav';
 
 const MenuItems = () => {
 	const router = useRouter();
-	const [position, setPosition] = useState(0);
-	const [translate, setTranslate] = useState("0%");
+	const [initPosition, initTranslate] = getValues(router);
+	const [position, setPosition] = useState(initPosition);
+	const [translate, setTranslate] = useState(initTranslate);
 
 
 	useEffect(() => {

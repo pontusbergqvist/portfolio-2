@@ -6,16 +6,17 @@ import { motion } from "framer-motion";
 const MenuItems = () => {
 	const router = useRouter();
 	const [position, setPosition] = useState(0);
-	const [translate, setTranslate] = useState("0%")
+	const [translate, setTranslate] = useState("0%");
+
 
 	useEffect(() => {
 			if (router.route === "/") {
 				setPosition(0);
-				setTranslate("0%")
-			} else if (router.route === "/work") {
+				setTranslate("0%");
+			} else if (router.route.slice(0, 5) === "/work") {
 				setPosition(180);
 				setTranslate("-50%");
-			} else if (router.route === "/blog") {
+			} else if (router.route.slice(0, 5) === "/blog") {
 				setPosition(360);
 				setTranslate("-100%");
 			}
@@ -29,6 +30,7 @@ const MenuItems = () => {
 			<motion.div
 				className={`bg-item-dark dark:bg-item-light h-full w-[72px] rounded absolute`}
 				animate={{ x: position, translateX: translate }}
+				initial={false}
 			></motion.div>
 		</ul>
 		)

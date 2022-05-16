@@ -1,5 +1,4 @@
 const { screens } = require('tailwindcss/defaultTheme');
-const { brotliCompress } = require('zlib');
 
 module.exports = {
 	content: [

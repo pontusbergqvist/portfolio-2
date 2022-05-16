@@ -67,7 +67,7 @@ const Post = ({ post, nextPost, previousPost }: Props) => {
 						<p className="text-sm">{date.slice(0, 10)}</p>
 					</div>
 				</div>
-				<div className="w-full flex justify-between my-16">
+				<div className="w-full flex flex-col items-center md:flex-row md:justify-between my-16">
 					<Button type="previous" route="/blog" data={previousPost} />
 					<Button type="next" route="/blog" data={nextPost} />
 				</div>

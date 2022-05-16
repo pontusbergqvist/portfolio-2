@@ -6,6 +6,7 @@ import useQuery from './useQuery';
  * @param {string} pages - An array of possible query routes from a query page. The array should be formatted [previous, current, next]
  * @returns {string} returns a string to be used as a condition in the variants object for the framer motion element.
  */
+
 const usePageTransition = (pages: string[]): string => {
 	const ref = useRef<string | undefined>();
 	const query = useQuery();
@@ -15,7 +16,7 @@ const usePageTransition = (pages: string[]): string => {
 	}, [query])
 
 	if (!ref.current) return 'rtl';
-	return 2 > pages.indexOf(ref.current) ? 'ltr' : 'rtl';
+	return 1 > pages.indexOf(ref.current) ? 'ltr' : 'rtl';
 }
 
 export default usePageTransition;

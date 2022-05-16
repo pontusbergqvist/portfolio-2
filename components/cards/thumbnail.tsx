@@ -16,9 +16,9 @@ interface Props {
 
 const Thumbnail = ({ src, alt }: Props) => {
 	return (
-		<div className="overflow-hidden max-w-[290px] h-[150px] rounded">
+		<div className="overflow-hidden max-w-[290px] h-[150px] rounded shadow-md">
 			<motion.img 
-				variants={variants} 
+				variants={variants}
 				className="w-full h-full object-cover" 
 				src={src} alt={alt} />
 		</div>

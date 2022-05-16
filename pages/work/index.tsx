@@ -31,7 +31,7 @@ const Work: NextPage<Projects> = ({ projects }) => {
 					<article className="h-full w-full overflow-hidden order-last md:order-none">
 						<div className="max-w-[290px] h-[150px] rounded bg-item-light dark:bg-item-dark mx-auto">
 						</div>
-						<div className="max-w-[290px] blog:max-w-full mx-auto my-2">
+						<div className="max-w-[290px] blog:max-w-full mx-auto my-3">
 							<h3 className='text-h3'>Ecommerce</h3>
 							<p className='my-1 text-sm'>Coming soon™</p>
 						</div>

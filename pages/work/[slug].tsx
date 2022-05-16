@@ -5,6 +5,7 @@ import Tags from '../../components/shared/tags';
 import Button from '../../components/shared/button'
 import Contentful from '../../api/contentful';
 import AnimateQueryPage from '../../components/shared/animatequerypage';
+import ExternalLink from '../../components/work/externallink';
 import { Project } from '../../models/work';
 import { AiFillGithub } from 'react-icons/ai'
 import { BiLinkExternal } from 'react-icons/bi'
@@ -12,8 +13,6 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { AdjacentPostData } from '../../models/blog';
-import { motion } from 'framer-motion';
-import ExternalLink from '../../components/work/externallink';
 
 interface Params extends ParsedUrlQuery {
 	slug: string;
@@ -52,21 +51,20 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
 }
 
 const Project = ({ project, nextProject, previousProject }: Props) => {
-	const { title, tags, description, image, body, externalLink, github } = project;
+	const { title, tags, image, body, externalLink, github } = project;
 
 	return (
 		<AnimateQueryPage pages={[previousProject?.slug, project.slug, nextProject?.slug]}>
 			<Layout>
 				<Heading>{title}</Heading>
-				<img src={image.fields.file.url} alt={title} className='mt-4 w-full h-[250px] object-cover rounded' />
+				<img src={image.fields.file.url} alt={title} className='my-4 w-full h-[250px] object-cover rounded' />
 				<Breadcrumbs current={title} />
 				<br />
 				<Tags tags={tags} />
-				<p className="my-5">{description}</p>
-				<div>
+				<div className="my-5">
 					{documentToReactComponents(body)}
 				</div>
-				<div className='flex text-h2 -ml-1 my-2'>
+				<div className='flex text-h2 -ml-1 my-5'>
 					{github && <ExternalLink to={github} icon={<AiFillGithub />} />}
 					{externalLink && <ExternalLink to={externalLink} icon={<BiLinkExternal />} />}
 				</div>

@@ -6,6 +6,7 @@ import Button from '../../components/shared/button'
 import Contentful from '../../api/contentful';
 import AnimateQueryPage from '../../components/shared/animatequerypage';
 import ExternalLink from '../../components/work/externallink';
+import options from '../../utils/documentToReactComponents';
 import { Project } from '../../models/work';
 import { AiFillGithub } from 'react-icons/ai'
 import { BiLinkExternal } from 'react-icons/bi'
@@ -62,7 +63,7 @@ const Project = ({ project, nextProject, previousProject }: Props) => {
 				<br />
 				<Tags tags={tags} />
 				<div className="my-5">
-					{documentToReactComponents(body)}
+					{documentToReactComponents(body, options)}
 				</div>
 				<div className='flex text-h2 -ml-1 my-5'>
 					{github && <ExternalLink to={github} icon={<AiFillGithub />} />}

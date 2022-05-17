@@ -4,6 +4,7 @@ import Tags from '../../components/shared/tags';
 import Button from '../../components/shared/button';
 import Contentful from '../../api/contentful';
 import AnimateQueryPage from '../../components/shared/animatequerypage';
+import options from '../../utils/documentToReactComponents';
 import { AdjacentPostData, Post } from '../../models/blog';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
@@ -56,9 +57,8 @@ const Post = ({ post, nextPost, previousPost }: Props) => {
 				<Heading>{title}</Heading>
 				<img src={image.fields.file.url} alt={title} className='mt-4 w-full h-[250px] object-cover rounded mb-3' />
 				<Tags tags={tags} />
-				<p className="italic my-6">{description}</p>
 				<div>
-					{documentToReactComponents(body)}
+					{documentToReactComponents(body, options)}
 				</div>
 				<div className="flex my-5">
 					<div className="h-[75px] w-[75px] border border-accent rounded-full"></div>

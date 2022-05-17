@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
 }
 
 const Post = ({ post, nextPost, previousPost }: Props) => {
-	const { title, description, date, body, image, tags, timeToRead } = post;
+	const { title, date, body, image, tags, timeToRead } = post;
 
 	return (
 		<Layout>

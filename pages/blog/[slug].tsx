@@ -68,8 +68,12 @@ const Post = ({ post, nextPost, previousPost }: Props) => {
 					</div>
 				</div>
 				<div className="w-full flex flex-col items-center md:flex-row md:justify-between my-16">
-					<Button type="previous" route="/blog" data={previousPost} />
-					<Button type="next" route="/blog" data={nextPost} />
+					<Button type="previous" route="/blog" data={previousPost}>
+						No previous post
+					</Button>
+					<Button type="next" route="/blog" data={nextPost}>
+						No more posts
+					</Button>
 				</div>
 			</AnimateQueryPage>
 		</Layout>

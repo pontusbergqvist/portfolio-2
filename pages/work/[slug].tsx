@@ -70,8 +70,12 @@ const Project = ({ project, nextProject, previousProject }: Props) => {
 					{externalLink && <ExternalLink to={externalLink} icon={<BiLinkExternal />} />}
 				</div>
 				<div className="w-full flex justify-between my-16">
-					<Button type="previous" route="/work" data={previousProject} />
-					<Button type="next" route="/work" data={nextProject} />
+					<Button type="previous" route="/work" data={previousProject}>
+						No previous project
+					</Button>
+					<Button type="next" route="/work" data={nextProject}>
+						No next project
+					</Button>
 				</div>
 			</Layout>
 		</AnimateQueryPage>

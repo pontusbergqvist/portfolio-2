@@ -6,9 +6,10 @@ interface Props {
 	data: AdjacentPostData | null;
 	type: string;
 	route: string;
+	children: string;
 }
 
-const Button = ({ data, type, route }: Props) => {
+const Button = ({ data, type, route, children }: Props) => {
 	return data ? (
 		<Link href={`${route}/${data.slug}`} passHref scroll={false}>
 			<motion.div 
@@ -25,7 +26,7 @@ const Button = ({ data, type, route }: Props) => {
 			<div 
 				className={`border border-dark dark:border-light rounded p-2 w-[230px] mr-2 pointer-events-none opacity-50 ${type === "next" && "text-right"}`}>
 				<p className="text-sm">{type === "next" ? "Next" : "Previous"}</p>
-				<p>{type === "next" ? "No more posts" : "No previous post"}</p>
+				<p>{children}</p>
 			</div>
 		);
 }

@@ -14,8 +14,8 @@ const Button = ({ data, type, route, children }: Props) => {
 		<Link href={`${route}/${data.slug}`} passHref scroll={false}>
 			<motion.div 
 				whileHover={{ scale: 1.01, boxShadow: '1px 1px #1E273B' }}
-				className={`border border-dark dark:border-light rounded p-2 w-[230px] mr-2 cursor-pointer
-					${type === "next" && "text-right"}
+				className={`text-center border border-dark dark:border-light rounded p-2 w-[230px] m-2 cursor-pointer
+					${type === "next" ? "md:text-right" : "md:text-left"}
 					${data.title ? "cursor-pointer" : "pointer-events-none opacity-50"}
 				`}>
 				<p className="text-sm">{type === "next" ? "Next" : "Previous"}</p>
@@ -24,7 +24,7 @@ const Button = ({ data, type, route, children }: Props) => {
 		</Link>
 		) : (
 			<div 
-				className={`border border-dark dark:border-light rounded p-2 w-[230px] mr-2 pointer-events-none opacity-50 ${type === "next" && "text-right"}`}>
+				className={`text-center border border-dark dark:border-light rounded p-2 w-[230px] m-2 pointer-events-none opacity-50 ${type === "next" ? "md:text-right" : "md:text-left"}`}>
 				<p className="text-sm">{type === "next" ? "Next" : "Previous"}</p>
 				<p>{children}</p>
 			</div>

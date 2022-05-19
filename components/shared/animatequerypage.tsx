@@ -1,6 +1,7 @@
 import Head from 'next/head';
-import { queryVariants } from '../../utils/variants';
+import variants from '../../utils/variants';
 import { motion, AnimatePresence } from 'framer-motion';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 interface Props {
 	children: any;
@@ -10,11 +11,14 @@ interface Props {
 }
 
 const AnimateQueryPage = ({ children, id, title, direction }: Props) => {
+	const width = useWindowWidth();
+	const variant = variants(width)
+
 	return (
 		<AnimatePresence exitBeforeEnter onExitComplete={() => scrollTo(0, 0)}>
 			<motion.article 
 				key={id}
-				variants={queryVariants}
+				variants={variant}
 				custom={direction}
 				initial="initial"
 				animate="enter" 

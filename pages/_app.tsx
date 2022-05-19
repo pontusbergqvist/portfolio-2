@@ -4,14 +4,14 @@ import Nav from '../components/nav';
 import usePageTransition from '../hooks/usePageTransition';
 import useWindowWidth from '../hooks/useWindowWidth';
 import Head from 'next/head';
+import variants from '../utils/variants';
 import { ThemeProvider } from 'next-themes';
 import { AnimatePresence, motion } from 'framer-motion';
-import { getVariants } from '../utils/variants';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
 	const direction = usePageTransition(router.route);
 	const windowWidth = useWindowWidth();
-	const variant = getVariants(windowWidth);
+	const variant = variants(windowWidth);
 
 	const routeToString = (input: string): string => input === "/" ? "Home" : input.slice(0, 5).charAt(1).toUpperCase() + input.slice(2, 5);
 

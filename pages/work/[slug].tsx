@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
 }
 
 const Project = ({ project, nextProject, previousProject }: Props) => {
-	const [dir, setDir] = useState<string>("rtl");
+	const [dir, setDir] = useState<string>();
 	const { title, tags, image, body, externalLink, github } = project;
 
 	return (

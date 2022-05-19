@@ -8,7 +8,7 @@ interface Props {
 	type: string;
 	route: string;
 	children: string;
-	setDir: Dispatch<SetStateAction<string>>;
+	setDir: Dispatch<SetStateAction<string | undefined>>;
 }
 
 const Button = ({ data, type, route, children, setDir }: Props) => {

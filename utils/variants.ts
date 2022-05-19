@@ -24,7 +24,7 @@ export const getVariants = (windowWidth: boolean) => {
 
 
 export const queryVariants = {
-	init: (direction: string) => {
+	initial: (direction: string) => {
 		return {
 			x: direction === 'ltr' ? 300 : -300,
 			opacity: 0,		

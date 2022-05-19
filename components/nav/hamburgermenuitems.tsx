@@ -9,7 +9,7 @@ const container = {
 		transition: { delayChildren: 0, staggerChildren: .1 }
 	},
 	enter: {
-		transition: { delayChildren: .1, staggerChildren: .1 }
+		transition: { staggerChildren: .1 }
 	}
 }
 
@@ -21,7 +21,7 @@ const item = {
 	enter: {
 		opacity: 1,
 		x: 0,
-		transition: { duration: .2 }
+		transition: { duration: .1 }
 	}
 }
 

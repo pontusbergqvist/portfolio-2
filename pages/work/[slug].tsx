@@ -57,7 +57,7 @@ const Project = ({ project, nextProject, previousProject }: Props) => {
 	const { title, tags, image, body, externalLink, github } = project;
 
 	return (
-		<AnimateQueryPage id={project.slug} direction={dir}>
+		<AnimateQueryPage id={project.slug} title={title} direction={dir}>
 			<Layout>
 				<Heading>{title}</Heading>
 				<img src={image.fields.file.url} alt={title} className='my-4 w-full h-[250px] object-cover rounded' />

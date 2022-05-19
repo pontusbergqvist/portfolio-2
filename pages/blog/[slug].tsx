@@ -53,7 +53,7 @@ const Post = ({ post, nextPost, previousPost }: Props) => {
 	const { title, date, body, image, tags, timeToRead } = post;
 
 	return (
-		<AnimateQueryPage id={post.slug} direction={dir}>
+		<AnimateQueryPage id={post.slug} title={title} direction={dir}>
 			<Layout>
 					<p className='text-sm'>{date.slice(0, 10)} — {timeToRead} min read</p>
 					<Heading>{title}</Heading>

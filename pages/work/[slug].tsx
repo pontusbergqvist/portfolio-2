@@ -14,6 +14,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { AdjacentPostData } from '../../models/blog';
+import { useState } from 'react';
 
 interface Params extends ParsedUrlQuery {
 	slug: string;
@@ -52,10 +53,11 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
 }
 
 const Project = ({ project, nextProject, previousProject }: Props) => {
+	const [dir, setDir] = useState<string>("rtl");
 	const { title, tags, image, body, externalLink, github } = project;
 
 	return (
-		<AnimateQueryPage pages={[previousProject?.slug, project.slug, nextProject?.slug]}>
+		<AnimateQueryPage id={project.slug} direction={dir}>
 			<Layout>
 				<Heading>{title}</Heading>
 				<img src={image.fields.file.url} alt={title} className='my-4 w-full h-[250px] object-cover rounded' />
@@ -70,10 +72,10 @@ const Project = ({ project, nextProject, previousProject }: Props) => {
 					{externalLink && <ExternalLink to={externalLink} icon={<BiLinkExternal />} />}
 				</div>
 				<div className="w-full flex justify-between my-16">
-					<Button type="previous" route="/work" data={previousProject}>
+					<Button setDir={setDir} type="previous" route="/work" data={previousProject}>
 						No previous project
 					</Button>
-					<Button type="next" route="/work" data={nextProject}>
+					<Button setDir={setDir} type="next" route="/work" data={nextProject}>
 						No next project
 					</Button>
 				</div>

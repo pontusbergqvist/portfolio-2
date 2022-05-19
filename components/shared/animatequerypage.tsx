@@ -1,26 +1,23 @@
-import useQuery from '../../hooks/useQuery';
-import useQueryPageTransition from '../../hooks/useQueryPageTransition';
 import { queryVariants } from '../../utils/variants';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Props {
 	children: any;
-	pages: any[];
+	id: string;
+	direction: string | undefined;
 }
 
-const AnimateQueryPage = ({ children, pages }: Props) => {
-	const query = useQuery();
-	const direction = useQueryPageTransition(pages);
+const AnimateQueryPage = ({ children, id, direction }: Props) => {
 
 	return (
 		<AnimatePresence exitBeforeEnter onExitComplete={() => scrollTo(0, 0)}>
 			<motion.article 
-				key={query}
+				key={id}
 				variants={queryVariants}
 				custom={direction}
-				initial="init" 
+				initial="initial"
 				animate="enter" 
-				exit="exit" 
+				exit="exit"
 				className='my-8 md:my-28'
 			>
 				{ children }

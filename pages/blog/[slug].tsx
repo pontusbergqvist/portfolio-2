@@ -3,12 +3,13 @@ import Heading from '../../components/shared/heading';
 import Tags from '../../components/shared/tags';
 import Button from '../../components/shared/button';
 import Contentful from '../../api/contentful';
-import AnimateQueryPage from '../../components/shared/animatequerypage';
 import options from '../../utils/documentToReactComponents';
 import { AdjacentPostData, Post } from '../../models/blog';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { useState } from 'react';
+import AnimateQueryPage from '../../components/shared/animatequerypage';
 
 
 interface Params extends ParsedUrlQuery {
@@ -41,42 +42,43 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
 		props: {
 			post,
 			nextPost,
-			previousPost
+			previousPost,
 	  },
 		revalidate: 10
 	}
 }
 
 const Post = ({ post, nextPost, previousPost }: Props) => {
+	const [dir, setDir] = useState<string>();
 	const { title, date, body, image, tags, timeToRead } = post;
 
 	return (
-		<Layout>
-			<AnimateQueryPage pages={[previousPost?.slug, post.slug, nextPost?.slug]}>
-				<p className='text-sm'>{date.slice(0, 10)} — {timeToRead} min read</p>
-				<Heading>{title}</Heading>
-				<img src={image.fields.file.url} alt={title} className='mt-4 w-full h-[250px] object-cover rounded mb-3' />
-				<Tags tags={tags} />
-				<div>
-					{documentToReactComponents(body, options)}
-				</div>
-				<div className="flex my-5">
-					<div className="h-[75px] w-[75px] border border-accent rounded-full"></div>
-					<div className="mx-5 self-center">
-						<p className="mt-2">Pontus bergqvist</p>
-						<p className="text-sm">{date.slice(0, 10)}</p>
+		<AnimateQueryPage id={post.slug} direction={dir}>
+			<Layout>
+					<p className='text-sm'>{date.slice(0, 10)} — {timeToRead} min read</p>
+					<Heading>{title}</Heading>
+					<img src={image.fields.file.url} alt={title} className='mt-4 w-full h-[250px] object-cover rounded mb-3' />
+					<Tags tags={tags} />
+					<div>
+						{documentToReactComponents(body, options)}
 					</div>
-				</div>
-				<div className="w-full flex flex-col items-center md:flex-row md:justify-between my-16">
-					<Button type="previous" route="/blog" data={previousPost}>
-						No previous post
-					</Button>
-					<Button type="next" route="/blog" data={nextPost}>
-						No more posts
-					</Button>
-				</div>
-			</AnimateQueryPage>
-		</Layout>
+					<div className="flex my-5">
+						<div className="h-[75px] w-[75px] border border-accent rounded-full"></div>
+						<div className="mx-5 self-center">
+							<p className="mt-2">Pontus bergqvist</p>
+							<p className="text-sm">{date.slice(0, 10)}</p>
+						</div>
+					</div>
+					<div className="w-full flex flex-col items-center md:flex-row md:justify-between my-16">
+						<Button setDir={setDir} type="previous" route="/blog" data={previousPost}>
+							No previous post
+						</Button>
+						<Button setDir={setDir} type="next" route="/blog" data={nextPost}>
+							No more posts
+						</Button>
+					</div>
+			</Layout>
+		</AnimateQueryPage>
 	)
 }
 

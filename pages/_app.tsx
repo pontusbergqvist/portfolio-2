@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 				<div  className='bg-lighk text-dark dark:bg-dark dark:text-light text-body font-sansSerif'>
 					<div className='max-w-[650px] mx-auto'>
 					<Nav />
-					<AnimatePresence exitBeforeEnter initial={false} custom={direction} onExitComplete={() => scrollTo(0, 0)}>
+					<AnimatePresence initial={false} custom={direction} exitBeforeEnter onExitComplete={() => scrollTo(0, 0)}>
 						<motion.div
 							variants={variant} 
 							initial="initial" 

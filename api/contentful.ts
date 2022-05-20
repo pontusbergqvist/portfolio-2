@@ -1,6 +1,6 @@
-import { ContentfulClientApi, createClient, EntryCollection } from 'contentful';
-import { Post, AdjacentPostData } from '../models/blog';
 import { Project } from '../models/work';
+import { Post, AdjacentPostData } from '../models/blog';
+import { ContentfulClientApi, createClient, EntryCollection } from 'contentful';
 
 export default class Contentful {
 	client: ContentfulClientApi;

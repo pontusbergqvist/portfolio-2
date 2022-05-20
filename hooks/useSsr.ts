@@ -1,30 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 /**
-* Checks if the component is rendered on the server. Used as a condition for client side rendering.
-* @returns booelan
-*/
+ * Checks if the component is rendered on the server. Used as a condition for client side rendering.
+ * @returns booelan
+ */
 const useSsr = (): boolean => {
-	const [ssr, setSsr] = useState(true);
+  const [ssr, setSsr] = useState(true)
 
-	useEffect(() => {
-		typeof window === 'undefined' ? setSsr(true) : setSsr(false);
-	}, [])
+  useEffect(() => {
+    typeof window === 'undefined' ? setSsr(true) : setSsr(false)
+  }, [])
 
-	return ssr;
+  return ssr
 }
 
-export default useSsr;
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default useSsr

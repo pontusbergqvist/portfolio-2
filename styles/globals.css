@@ -3,22 +3,24 @@
 @tailwind utilities;
 
 @layer base {
-	html.dark {
-		@apply bg-dark;
-	}
-	html {
-		@apply bg-light;
-	}
+  html.dark {
+    @apply bg-dark;
+  }
+  html {
+    @apply bg-light;
+  }
 }
 
 @font-face {
-  font-family: "Dank Mono";
+  font-family: 'Dank Mono';
   font-weight: 400;
-  src: local('Dank Mono'), url("./fonts/DankMono-Regular.ttf") format("truetype");
+  src: local('Dank Mono'),
+    url('./fonts/DankMono-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "IBM Plex Serif";
+  font-family: 'IBM Plex Serif';
   font-weight: 400;
-  src: local("IBM Plex Mono"), url("./fonts/IBMPlexSerif-Regular.ttf") format("truetype");
+  src: local('IBM Plex Mono'),
+    url('./fonts/IBMPlexSerif-Regular.ttf') format('truetype');
 }

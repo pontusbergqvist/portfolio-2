@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <footer className="mt-14 pb-14">
+    <footer className="pb-5">
       <Heading>Contact</Heading>
       <section className="flex flex-col footer:flex-row justify-between">
         <div>

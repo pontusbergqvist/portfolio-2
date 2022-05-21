@@ -1,4 +1,4 @@
-# Bergqvist.io
+# Portfolio
 
 This is the second iteration of my personal portfolio website. The site can be visited here: [https://bergqvist.io/](https://bergqvist.io/)
 

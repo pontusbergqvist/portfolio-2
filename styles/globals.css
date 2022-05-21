@@ -9,6 +9,33 @@
   html {
     @apply bg-light;
   }
+  .markdown h2 {
+    @apply text-h2 my-3 font-mono;
+  }
+  .markdown h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    @apply bg-accent mb-5;
+  }
+  .markdown h3 {
+    @apply text-h3 font-mono underline-offset-2 my-1;
+  }
+  .markdown p {
+    @apply my-2 text-[16px];
+  }
+  .markdown ul {
+    list-style: disc;
+    margin-left: 1em;
+    @apply mb-5;
+  }
+  .markdown li {
+    @apply my-1 font-serif;
+  }
+  .markdown :link {
+    @apply font-mono underline bg-item-light dark:bg-item-dark rounded p-1;
+  }
 }
 
 @font-face {

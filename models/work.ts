@@ -1,4 +1,4 @@
-import { EntryFields, Asset } from 'contentful';
+import { EntryFields, Asset, Entry } from 'contentful';
 import { Document } from '@contentful/rich-text-types';
 
 export interface Project {
@@ -8,7 +8,7 @@ export interface Project {
   image: Asset;
   slug: EntryFields.Text;
   tags: string[];
-  body: Document;
+  body: EntryFields.Text;
   externalLink?: EntryFields.Text;
   github?: EntryFields.Text;
 }

@@ -6,13 +6,13 @@ import Button from '../../components/shared/button';
 import Contentful from '../../api/contentful';
 import AnimateQueryPage from '../../components/shared/animatequerypage';
 import ExternalLink from '../../components/work/externallink';
-import options from '../../utils/documentToReactComponents';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Project } from '../../models/work';
 import { AiFillGithub } from 'react-icons/ai';
 import { BiLinkExternal } from 'react-icons/bi';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { AdjacentPostData } from '../../models/blog';
 import { useState } from 'react';
 
@@ -61,16 +61,20 @@ const Project = ({ project, nextProject, previousProject }: Props) => {
   return (
     <AnimateQueryPage id={project.slug} title={title} direction={dir}>
       <Layout>
-        <Heading>{title}</Heading>
         <img
           src={image.fields.file.url}
           alt={title}
-          className="my-4 w-full h-[250px] object-cover rounded"
+          className="my-4 w-full h-[250px] object-cover rounded shadow-lg"
         />
         <Breadcrumbs current={title} />
-        <br />
+        <Heading>{title}</Heading>
+        <div className="markdown my-5">
+          <ReactMarkdown
+            children={body.toString()}
+            remarkPlugins={[remarkGfm]}
+          />
+        </div>
         <Tags tags={tags} />
-        <div className="my-5">{documentToReactComponents(body, options)}</div>
         <div className="flex text-h2 -ml-1 my-5">
           {github && <ExternalLink to={github} icon={<AiFillGithub />} />}
           {externalLink && (

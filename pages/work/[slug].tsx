@@ -1,48 +1,48 @@
-import Breadcrumbs from '../../components/shared/breadcrumbs'
-import Heading from '../../components/shared/heading'
-import Layout from '../../components/layout'
-import Tags from '../../components/shared/tags'
-import Button from '../../components/shared/button'
-import Contentful from '../../api/contentful'
-import AnimateQueryPage from '../../components/shared/animatequerypage'
-import ExternalLink from '../../components/work/externallink'
-import options from '../../utils/documentToReactComponents'
-import { Project } from '../../models/work'
-import { AiFillGithub } from 'react-icons/ai'
-import { BiLinkExternal } from 'react-icons/bi'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { ParsedUrlQuery } from 'querystring'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { AdjacentPostData } from '../../models/blog'
-import { useState } from 'react'
+import Breadcrumbs from '../../components/shared/breadcrumbs';
+import Heading from '../../components/shared/heading';
+import Layout from '../../components/layout';
+import Tags from '../../components/shared/tags';
+import Button from '../../components/shared/button';
+import Contentful from '../../api/contentful';
+import AnimateQueryPage from '../../components/shared/animatequerypage';
+import ExternalLink from '../../components/work/externallink';
+import options from '../../utils/documentToReactComponents';
+import { Project } from '../../models/work';
+import { AiFillGithub } from 'react-icons/ai';
+import { BiLinkExternal } from 'react-icons/bi';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { ParsedUrlQuery } from 'querystring';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { AdjacentPostData } from '../../models/blog';
+import { useState } from 'react';
 
 interface Params extends ParsedUrlQuery {
-  slug: string
+  slug: string;
 }
 
 interface Props {
-  project: Project
-  nextProject: AdjacentPostData | null
-  previousProject: AdjacentPostData | null
+  project: Project;
+  nextProject: AdjacentPostData | null;
+  previousProject: AdjacentPostData | null;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const contentful = new Contentful()
-  const paths = await contentful.getAllProjectPaths()
+  const contentful = new Contentful();
+  const paths = await contentful.getAllProjectPaths();
 
   return {
     paths,
     fallback: false,
-  }
-}
+  };
+};
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const contentful = new Contentful()
-  const project = await contentful.getProject(params!.slug)
-  const nextProject = await contentful.getNextProject(project)
-  const previousProject = await contentful.getPreviousProject(project)
+  const contentful = new Contentful();
+  const project = await contentful.getProject(params!.slug);
+  const nextProject = await contentful.getNextProject(project);
+  const previousProject = await contentful.getPreviousProject(project);
 
   return {
     props: {
@@ -51,12 +51,12 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
       previousProject,
     },
     revalidate: 10,
-  }
-}
+  };
+};
 
 const Project = ({ project, nextProject, previousProject }: Props) => {
-  const [dir, setDir] = useState<string>()
-  const { title, tags, image, body, externalLink, github } = project
+  const [dir, setDir] = useState<string>();
+  const { title, tags, image, body, externalLink, github } = project;
 
   return (
     <AnimateQueryPage id={project.slug} title={title} direction={dir}>
@@ -92,7 +92,7 @@ const Project = ({ project, nextProject, previousProject }: Props) => {
         </div>
       </Layout>
     </AnimateQueryPage>
-  )
-}
+  );
+};
 
-export default Project
+export default Project;

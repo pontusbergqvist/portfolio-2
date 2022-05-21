@@ -1,7 +1,7 @@
-import Footer from '../layout/footer'
+import Footer from '../layout/footer';
 
 interface Props {
-  children: JSX.Element | JSX.Element[]
+  children: JSX.Element | JSX.Element[];
 }
 
 const Layout = ({ children }: Props) => {
@@ -10,7 +10,7 @@ const Layout = ({ children }: Props) => {
       {children}
       <Footer />
     </main>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

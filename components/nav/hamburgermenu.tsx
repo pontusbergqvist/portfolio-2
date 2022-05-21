@@ -1,9 +1,9 @@
-import MenuOverlay from './menuoverlay'
-import HamburgerMenuItems from './hamburgermenuitems'
-import useWindowWidth from '../../hooks/useWindowWidth'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import MenuOverlay from './menuoverlay';
+import HamburgerMenuItems from './hamburgermenuitems';
+import useWindowWidth from '../../hooks/useWindowWidth';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 const variants = {
   init: {
@@ -17,14 +17,14 @@ const variants = {
     x: 50,
     transition: { duration: 0.2 },
   },
-}
+};
 
 const HamburgerMenu = () => {
-  const [open, setOpen] = useState(false)
-  const router = useRouter()
-  const breakpoint = useWindowWidth()
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
+  const breakpoint = useWindowWidth();
 
-  useEffect(() => setOpen(false), [breakpoint, router.route])
+  useEffect(() => setOpen(false), [breakpoint, router.route]);
 
   return (
     <>
@@ -61,7 +61,7 @@ const HamburgerMenu = () => {
       {open && <MenuOverlay onClick={setOpen} />}
       {open && <HamburgerMenuItems />}
     </>
-  )
-}
+  );
+};
 
-export default HamburgerMenu
+export default HamburgerMenu;

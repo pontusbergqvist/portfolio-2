@@ -1,18 +1,18 @@
-import Link from 'next/link'
-import { AiOutlineBranches } from 'react-icons/ai'
-import { useRouter } from 'next/router'
+import Link from 'next/link';
+import { AiOutlineBranches } from 'react-icons/ai';
+import { useRouter } from 'next/router';
 
 interface Props {
-  current: string
+  current: string;
 }
 
 const Breadcrumbs = ({ current }: Props) => {
-  const router = useRouter()
+  const router = useRouter();
 
   const getPathStringFromRoute = (string: string): string => {
-    string = string.slice(1)
-    return string.slice(0, string.indexOf('/'))
-  }
+    string = string.slice(1);
+    return string.slice(0, string.indexOf('/'));
+  };
 
   return (
     <div className="inline-flex items-center bg-item-light dark:bg-item-dark font-mono my-2">
@@ -27,7 +27,7 @@ const Breadcrumbs = ({ current }: Props) => {
         <p className="px-2 cursor-pointer">{current}</p>
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default Breadcrumbs
+export default Breadcrumbs;

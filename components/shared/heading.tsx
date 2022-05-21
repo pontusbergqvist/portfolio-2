@@ -1,5 +1,5 @@
 interface Props {
-  children: string
+  children: string;
 }
 
 const Heading = ({ children }: Props) => {
@@ -7,7 +7,7 @@ const Heading = ({ children }: Props) => {
     <h2 className="text-h2 inline-block font-mono after:content-[''] after:block after:h-[2px] after:w-full after:bg-accent">
       {children}
     </h2>
-  )
-}
+  );
+};
 
-export default Heading
+export default Heading;

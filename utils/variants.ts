@@ -1,4 +1,4 @@
-import { Variants } from 'framer-motion'
+import { Variants } from 'framer-motion';
 
 const variants = (windowWidth: boolean): Variants => {
   return {
@@ -7,7 +7,7 @@ const variants = (windowWidth: boolean): Variants => {
         x: direction === 'ltr' ? (windowWidth ? 300 : -300) : -300,
         opacity: 0,
         transition: { duration: 0.2 },
-      }
+      };
     },
     enter: {
       x: 0,
@@ -19,9 +19,9 @@ const variants = (windowWidth: boolean): Variants => {
         x: direction === 'ltr' ? (windowWidth ? -300 : 300) : 300,
         opacity: 0,
         transition: { type: 'tween', duration: 0.2 },
-      }
+      };
     },
-  }
-}
+  };
+};
 
-export default variants
+export default variants;

@@ -1,14 +1,14 @@
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { useRouter } from 'next/router'
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 interface Props {
-  route: string
+  route: string;
 }
 
 const MenuItem = ({ route }: Props) => {
-  const router = useRouter()
-  const slug = router.query?.slug || ''
+  const router = useRouter();
+  const slug = router.query?.slug || '';
 
   return (
     <motion.li
@@ -24,7 +24,7 @@ const MenuItem = ({ route }: Props) => {
         </a>
       </Link>
     </motion.li>
-  )
-}
+  );
+};
 
-export default MenuItem
+export default MenuItem;

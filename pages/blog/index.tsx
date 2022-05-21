@@ -1,24 +1,24 @@
-import type { GetStaticProps, NextPage } from 'next'
-import Layout from '../../components/layout'
-import Heading from '../../components/shared/heading'
-import BlogCard from '../../components/cards/blogcard'
-import Contentful from '../../api/contentful'
-import { Post } from '../../models/blog'
+import type { GetStaticProps, NextPage } from 'next';
+import Layout from '../../components/layout';
+import Heading from '../../components/shared/heading';
+import BlogCard from '../../components/cards/blogcard';
+import Contentful from '../../api/contentful';
+import { Post } from '../../models/blog';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const contentful = new Contentful()
-  const posts = await contentful.getAllBlogPosts()
+  const contentful = new Contentful();
+  const posts = await contentful.getAllBlogPosts();
 
   return {
     props: {
       posts,
     },
     revalidate: 10,
-  }
-}
+  };
+};
 
 interface Posts {
-  posts: Post[]
+  posts: Post[];
 }
 
 const Blog: NextPage<Posts> = ({ posts }) => {
@@ -34,7 +34,7 @@ const Blog: NextPage<Posts> = ({ posts }) => {
         </div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

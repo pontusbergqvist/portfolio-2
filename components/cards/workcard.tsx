@@ -1,14 +1,14 @@
-import Link from 'next/link'
-import Thumbnail from './thumbnail'
-import { Project } from '../../models/work'
-import { motion } from 'framer-motion'
+import Link from 'next/link';
+import Thumbnail from './thumbnail';
+import { Project } from '../../models/work';
+import { motion } from 'framer-motion';
 
 interface Props {
-  project: Project
+  project: Project;
 }
 
 const Card = ({ project }: Props) => {
-  const { title, image, description, slug } = project
+  const { title, image, description, slug } = project;
 
   return (
     <Link href={`/work/${slug}`} passHref scroll={false}>
@@ -23,7 +23,7 @@ const Card = ({ project }: Props) => {
         </div>
       </motion.article>
     </Link>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

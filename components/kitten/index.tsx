@@ -1,8 +1,8 @@
-import Typewriter from './typewriter'
-import useHover from '../../hooks/useHover'
+import Typewriter from './typewriter';
+import useHover from '../../hooks/useHover';
 
 const Kitten = () => {
-  const [ref, isHovering] = useHover()
+  const [ref, isHovering] = useHover();
 
   return (
     <a
@@ -17,7 +17,7 @@ const Kitten = () => {
       <br />
       {isHovering && <Typewriter>Get in touch!</Typewriter>}
     </a>
-  )
-}
+  );
+};
 
-export default Kitten
+export default Kitten;

@@ -1,10 +1,10 @@
-import useSsr from '../../hooks/useSsr'
-import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs'
-import { useTheme } from 'next-themes'
+import useSsr from '../../hooks/useSsr';
+import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
+import { useTheme } from 'next-themes';
 
 const ThemeButton = () => {
-  const { theme, setTheme } = useTheme()
-  const ssr = useSsr()
+  const { theme, setTheme } = useTheme();
+  const ssr = useSsr();
 
   return !ssr ? (
     <div
@@ -19,7 +19,7 @@ const ThemeButton = () => {
     </div>
   ) : (
     <div></div>
-  )
-}
+  );
+};
 
-export default ThemeButton
+export default ThemeButton;

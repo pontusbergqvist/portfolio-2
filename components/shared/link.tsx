@@ -1,8 +1,8 @@
-import { default as NextLink } from 'next/link'
+import { default as NextLink } from 'next/link';
 
 interface Props {
-  to: string
-  children: string
+  to: string;
+  children: string;
 }
 
 const Link = ({ to, children }: Props) => {
@@ -14,7 +14,7 @@ const Link = ({ to, children }: Props) => {
         </a>
       </NextLink>
     </div>
-  )
-}
+  );
+};
 
-export default Link
+export default Link;

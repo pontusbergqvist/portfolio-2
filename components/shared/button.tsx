@@ -1,14 +1,14 @@
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { AdjacentPostData } from '../../models/blog'
-import { Dispatch, SetStateAction } from 'react'
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { AdjacentPostData } from '../../models/blog';
+import { Dispatch, SetStateAction } from 'react';
 
 interface Props {
-  data: AdjacentPostData | null
-  type: string
-  route: string
-  children: string
-  setDir: Dispatch<SetStateAction<string | undefined>>
+  data: AdjacentPostData | null;
+  type: string;
+  route: string;
+  children: string;
+  setDir: Dispatch<SetStateAction<string | undefined>>;
 }
 
 const Button = ({ data, type, route, children, setDir }: Props) => {
@@ -35,7 +35,7 @@ const Button = ({ data, type, route, children, setDir }: Props) => {
       <p className="text-sm">{type === 'next' ? 'Next' : 'Previous'}</p>
       <p>{children}</p>
     </div>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

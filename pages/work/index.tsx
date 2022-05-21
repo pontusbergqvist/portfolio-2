@@ -1,24 +1,24 @@
-import Layout from '../../components/layout'
-import type { GetStaticProps, NextPage } from 'next'
-import Heading from '../../components/shared/heading'
-import WorkCard from '../../components/cards/workcard'
-import Contentful from '../../api/contentful'
-import { Project } from '../../models/work'
+import Layout from '../../components/layout';
+import type { GetStaticProps, NextPage } from 'next';
+import Heading from '../../components/shared/heading';
+import WorkCard from '../../components/cards/workcard';
+import Contentful from '../../api/contentful';
+import { Project } from '../../models/work';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const contentful = new Contentful()
-  const projects = await contentful.getAllProjects()
+  const contentful = new Contentful();
+  const projects = await contentful.getAllProjects();
 
   return {
     props: {
       projects,
     },
     revalidate: 10,
-  }
-}
+  };
+};
 
 interface Projects {
-  projects: Project[]
+  projects: Project[];
 }
 
 const Work: NextPage<Projects> = ({ projects }) => {
@@ -41,6 +41,6 @@ const Work: NextPage<Projects> = ({ projects }) => {
         </div>
       </div>
     </Layout>
-  )
-}
-export default Work
+  );
+};
+export default Work;

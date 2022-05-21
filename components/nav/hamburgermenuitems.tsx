@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useTheme } from 'next-themes'
-import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs'
-import { motion } from 'framer-motion'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useTheme } from 'next-themes';
+import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
+import { motion } from 'framer-motion';
 
 const container = {
   init: {
@@ -11,7 +11,7 @@ const container = {
   enter: {
     transition: { staggerChildren: 0.1 },
   },
-}
+};
 
 const item = {
   init: {
@@ -23,11 +23,11 @@ const item = {
     x: 0,
     transition: { duration: 0.1 },
   },
-}
+};
 
 const HamburgerMenuItems = () => {
-  const { theme, setTheme } = useTheme()
-  const router = useRouter()
+  const { theme, setTheme } = useTheme();
+  const router = useRouter();
 
   return (
     <motion.ul
@@ -70,7 +70,7 @@ const HamburgerMenuItems = () => {
         {theme === 'light' ? <BsFillSunFill /> : <BsFillMoonFill />}
       </motion.li>
     </motion.ul>
-  )
-}
+  );
+};
 
-export default HamburgerMenuItems
+export default HamburgerMenuItems;

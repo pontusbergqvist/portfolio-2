@@ -1,43 +1,43 @@
-import Layout from '../../components/layout'
-import Heading from '../../components/shared/heading'
-import Tags from '../../components/shared/tags'
-import Button from '../../components/shared/button'
-import Contentful from '../../api/contentful'
-import options from '../../utils/documentToReactComponents'
-import { AdjacentPostData, Post } from '../../models/blog'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { ParsedUrlQuery } from 'querystring'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { useState } from 'react'
-import AnimateQueryPage from '../../components/shared/animatequerypage'
+import Layout from '../../components/layout';
+import Heading from '../../components/shared/heading';
+import Tags from '../../components/shared/tags';
+import Button from '../../components/shared/button';
+import Contentful from '../../api/contentful';
+import options from '../../utils/documentToReactComponents';
+import { AdjacentPostData, Post } from '../../models/blog';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { ParsedUrlQuery } from 'querystring';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { useState } from 'react';
+import AnimateQueryPage from '../../components/shared/animatequerypage';
 
 interface Params extends ParsedUrlQuery {
-  slug: string
+  slug: string;
 }
 
 interface Props {
-  post: Post
-  nextPost: AdjacentPostData | null
-  previousPost: AdjacentPostData | null
+  post: Post;
+  nextPost: AdjacentPostData | null;
+  previousPost: AdjacentPostData | null;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const contentful = new Contentful()
-  const paths = await contentful.getAllBlogPaths()
+  const contentful = new Contentful();
+  const paths = await contentful.getAllBlogPaths();
 
   return {
     paths,
     fallback: false,
-  }
-}
+  };
+};
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const contentful = new Contentful()
-  const post = await contentful.getPost(params!.slug)
-  const nextPost = await contentful.getNextPost(post)
-  const previousPost = await contentful.getPreviousPost(post)
+  const contentful = new Contentful();
+  const post = await contentful.getPost(params!.slug);
+  const nextPost = await contentful.getNextPost(post);
+  const previousPost = await contentful.getPreviousPost(post);
 
   return {
     props: {
@@ -46,12 +46,12 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
       previousPost,
     },
     revalidate: 10,
-  }
-}
+  };
+};
 
 const Post = ({ post, nextPost, previousPost }: Props) => {
-  const [dir, setDir] = useState<string>()
-  const { title, date, body, image, tags, timeToRead } = post
+  const [dir, setDir] = useState<string>();
+  const { title, date, body, image, tags, timeToRead } = post;
 
   return (
     <AnimateQueryPage id={post.slug} title={title} direction={dir}>
@@ -89,7 +89,7 @@ const Post = ({ post, nextPost, previousPost }: Props) => {
         </div>
       </Layout>
     </AnimateQueryPage>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;

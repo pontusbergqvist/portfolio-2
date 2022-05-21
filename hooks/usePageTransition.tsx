@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react';
 
 /**
  * Uses a pre-defined array of routes to find which direction to animate between pages
@@ -8,17 +8,17 @@ import { useEffect, useRef } from 'react'
  */
 const usePageTransition = (route: string): string => {
   // currentRoute is sliced to target dynamic routes too
-  const currentRoute = route.slice(0, 5)
-  const pages = ['/', '/work', '/blog']
+  const currentRoute = route.slice(0, 5);
+  const pages = ['/', '/work', '/blog'];
 
-  const ref = useRef<string | undefined>()
+  const ref = useRef<string | undefined>();
 
   useEffect(() => {
-    ref.current = currentRoute
-  }, [currentRoute])
+    ref.current = currentRoute;
+  }, [currentRoute]);
   return ref.current && pages.indexOf(currentRoute) > pages.indexOf(ref.current)
     ? 'ltr'
-    : 'rtl'
-}
+    : 'rtl';
+};
 
-export default usePageTransition
+export default usePageTransition;

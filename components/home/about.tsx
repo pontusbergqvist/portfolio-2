@@ -1,5 +1,5 @@
-import Heading from '../shared/heading'
-import Link from '../shared/link'
+import Heading from '../shared/heading';
+import Link from '../shared/link';
 
 const About = () => {
   return (
@@ -38,7 +38,7 @@ const About = () => {
       </section>
       <Link to="/work">View portfolio</Link>
     </section>
-  )
-}
+  );
+};
 
-export default About
+export default About;

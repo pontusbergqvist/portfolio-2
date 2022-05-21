@@ -1,5 +1,5 @@
 interface Props {
-  tags: string[]
+  tags: string[];
 }
 
 const Tags = ({ tags }: Props) => {
@@ -14,7 +14,7 @@ const Tags = ({ tags }: Props) => {
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
-export default Tags
+export default Tags;

@@ -1,4 +1,4 @@
-import { GoLocation } from 'react-icons/go'
+import { GoLocation } from 'react-icons/go';
 
 const Header = () => {
   return (
@@ -16,7 +16,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

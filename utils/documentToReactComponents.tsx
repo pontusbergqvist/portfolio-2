@@ -1,4 +1,4 @@
-import { BLOCKS } from '@contentful/rich-text-types'
+import { BLOCKS } from '@contentful/rich-text-types';
 
 const options = {
   renderNode: {
@@ -13,6 +13,6 @@ const options = {
     ),
     [BLOCKS.LIST_ITEM]: (node: any, children: any) => <li>{children}</li>,
   },
-}
+};
 
-export default options
+export default options;

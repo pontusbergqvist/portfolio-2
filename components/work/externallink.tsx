@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 interface Props {
-  to: string
-  icon: any
+  to: string;
+  icon: any;
 }
 
 const ExternalLink = ({ to, icon }: Props) => {
@@ -15,7 +15,7 @@ const ExternalLink = ({ to, icon }: Props) => {
         {icon}
       </a>
     </motion.div>
-  )
-}
+  );
+};
 
-export default ExternalLink
+export default ExternalLink;

@@ -1,7 +1,7 @@
-import Kitten from '../kitten'
-import Heading from '../shared/heading'
-import { FiMail, FiGithub, FiLinkedin } from 'react-icons/fi'
-import { motion } from 'framer-motion'
+import Kitten from '../kitten';
+import Heading from '../shared/heading';
+import { FiMail, FiGithub, FiLinkedin } from 'react-icons/fi';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
@@ -42,7 +42,7 @@ const Footer = () => {
         <Kitten />
       </section>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

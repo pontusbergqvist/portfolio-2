@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 const variants = {
   hover: {
@@ -7,11 +7,11 @@ const variants = {
       duration: 0.4,
     },
   },
-}
+};
 
 interface Props {
-  src: string
-  alt: string
+  src: string;
+  alt: string;
 }
 
 const Thumbnail = ({ src, alt }: Props) => {
@@ -24,7 +24,7 @@ const Thumbnail = ({ src, alt }: Props) => {
         alt={alt}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Thumbnail
+export default Thumbnail;

@@ -1,14 +1,14 @@
-import Link from 'next/link'
-import Thumbnail from './thumbnail'
-import { motion } from 'framer-motion'
-import { Post } from '../../models/blog'
+import Link from 'next/link';
+import Thumbnail from './thumbnail';
+import { motion } from 'framer-motion';
+import { Post } from '../../models/blog';
 
 interface Props {
-  post: Post
+  post: Post;
 }
 
 const BlogCard = ({ post }: Props) => {
-  const { title, image, description, slug, date } = post
+  const { title, image, description, slug, date } = post;
 
   return (
     <Link href={`/blog/${slug}`} passHref scroll={false}>
@@ -24,7 +24,7 @@ const BlogCard = ({ post }: Props) => {
         </div>
       </motion.article>
     </Link>
-  )
-}
+  );
+};
 
-export default BlogCard
+export default BlogCard;

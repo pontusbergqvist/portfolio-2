@@ -1,10 +1,10 @@
-import Heading from '../shared/heading'
-import Link from '../shared/link'
-import BlogCard from '../cards/blogcard'
-import { Post } from '../../models/blog'
+import Heading from '../shared/heading';
+import Link from '../shared/link';
+import BlogCard from '../cards/blogcard';
+import { Post } from '../../models/blog';
 
 interface Props {
-  posts: Post[]
+  posts: Post[];
 }
 
 const Blog = ({ posts }: Props) => {
@@ -20,7 +20,7 @@ const Blog = ({ posts }: Props) => {
       </div>
       <Link to="/blog">View posts</Link>
     </section>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

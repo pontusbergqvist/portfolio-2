@@ -1,6 +1,6 @@
-import ThemeButton from './themebutton'
-import HamburgerMenu from './hamburgermenu'
-import MenuItems from './menuitems'
+import ThemeButton from './themebutton';
+import HamburgerMenu from './hamburgermenu';
+import MenuItems from './menuitems';
 
 const Nav = () => {
   return (
@@ -13,7 +13,7 @@ const Nav = () => {
       {/* This is disabled for desktop devides */}
       <HamburgerMenu />
     </nav>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

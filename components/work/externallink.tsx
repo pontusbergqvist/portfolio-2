@@ -8,7 +8,7 @@ interface Props {
 const ExternalLink = ({ to, icon }: Props) => {
   return (
     <motion.div
-      className="px-1 cursor-pointer hover:text-accent"
+      className="px-1 cursor-pointer hover:text-accent text-[40px]"
       whileHover={{ scale: 1.2 }}
     >
       <a href={to} target="_blank" rel="noreferrer">

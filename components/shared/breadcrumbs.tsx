@@ -15,17 +15,19 @@ const Breadcrumbs = ({ current }: Props) => {
   };
 
   return (
-    <div className="inline-flex items-center bg-item-light dark:bg-item-dark font-mono my-2">
-      <Link href={'/' + getPathStringFromRoute(router.pathname)} passHref>
-        <p className="bg-accent text-light px-2 hover:text-dark cursor-pointer">
-          {getPathStringFromRoute(router.pathname)}
-        </p>
-      </Link>
-      <span className="border-t-[14px] border-t-transparent border-l-[14px] border-l-accent border-b-[14px] border-b-transparent mr-1"></span>
-      <AiOutlineBranches />
-      <Link href={router.asPath} passHref>
-        <p className="px-2 cursor-pointer">{current}</p>
-      </Link>
+    <div>
+      <div className="inline-flex items-center bg-item-light dark:bg-item-dark font-mono my-2">
+        <Link href={'/' + getPathStringFromRoute(router.pathname)} passHref>
+          <p className="bg-accent text-light px-2 hover:text-dark cursor-pointer">
+            {getPathStringFromRoute(router.pathname)}
+          </p>
+        </Link>
+        <span className="border-t-[14px] border-t-transparent border-l-[14px] border-l-accent border-b-[14px] border-b-transparent mr-1"></span>
+        <AiOutlineBranches />
+        <Link href={router.asPath} passHref>
+          <p className="px-2 cursor-pointer">{current}</p>
+        </Link>
+      </div>
     </div>
   );
 };

@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <title>{`${routeToString(router.route)} | Bergqvist.io`}</title>
         <link rel="shortcut icon" href="/favicon.ico?" />
       </Head>
-      <div className="bg-lighk text-dark dark:bg-dark dark:text-light text-body font-sansSerif">
+      <div className="bg-light text-dark dark:bg-dark dark:text-light text-body font-sansSerif">
         <div className="max-w-[650px] mx-auto">
           <Nav />
           <AnimatePresence

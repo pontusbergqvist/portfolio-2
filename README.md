@@ -13,7 +13,7 @@ This is the second iteration of my personal portfolio website. The site can be v
 - Framer Motion for animations
 
 ### Backend
-- Headless CMS with Contenful (REST API)
+- Headless CMS with Contentful (REST API)
 
 ### Tooling
 - ESLint

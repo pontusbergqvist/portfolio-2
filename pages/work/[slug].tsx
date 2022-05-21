@@ -69,10 +69,7 @@ const Project = ({ project, nextProject, previousProject }: Props) => {
         <Breadcrumbs current={title} />
         <Heading>{title}</Heading>
         <div className="markdown my-5">
-          <ReactMarkdown
-            children={body.toString()}
-            remarkPlugins={[remarkGfm]}
-          />
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
         </div>
         <Tags tags={tags} />
         <div className="flex text-h2 -ml-1 my-5">

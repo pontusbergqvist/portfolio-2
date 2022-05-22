@@ -37,6 +37,15 @@
   .markdown :link {
     @apply font-mono underline bg-item-light dark:bg-item-dark rounded p-1;
   }
+  .markdown blockquote {
+    @apply bg-item-light dark:bg-item-dark p-1 px-3 border-l-accent border-l-4 rounded italic;
+  }
+  .markdown code {
+    @apply bg-item-light dark:bg-item-dark p-1 rounded font-mono;
+  }
+  .markdown pre code {
+    @apply bg-item-light dark:bg-item-dark p-2 px-3 rounded font-mono;
+  }
 }
 
 @font-face {

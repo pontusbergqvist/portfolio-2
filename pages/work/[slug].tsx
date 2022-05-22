@@ -56,23 +56,22 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 
 const Project = ({ project, nextProject, previousProject }: Props) => {
   const [dir, setDir] = useState<string>();
-  const { title, tags, image, body, externalLink, github } = project;
+  const { title, image, body, externalLink, github } = project;
 
   return (
     <AnimateQueryPage id={project.slug} title={title} direction={dir}>
       <Layout>
+        <Heading>{title}</Heading>
         <img
           src={image.fields.file.url}
           alt={title}
           className="my-4 w-full h-[250px] object-cover rounded shadow-lg"
         />
         <Breadcrumbs current={title} />
-        <Heading>{title}</Heading>
         <div className="markdown my-5">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
         </div>
-        <Tags tags={tags} />
-        <div className="flex text-h2 -ml-1 my-5">
+        <div className="flex -ml-1">
           {github && <ExternalLink to={github} icon={<AiFillGithub />} />}
           {externalLink && (
             <ExternalLink to={externalLink} icon={<BiLinkExternal />} />

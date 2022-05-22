@@ -20,18 +20,19 @@
     @apply bg-accent mb-5;
   }
   .markdown h3 {
-    @apply text-h3 font-mono underline-offset-2 my-1;
+    @apply text-h3 font-mono tracking-wide underline-offset-2 my-1;
   }
   .markdown p {
-    @apply my-2 text-[16px];
+    @apply my-2 text-[18px];
   }
   .markdown ul {
-    list-style: disc;
-    margin-left: 1em;
-    @apply mb-5;
+    @apply mb-5 p-1 px-3 rounded bg-item-light dark:bg-item-dark;
   }
   .markdown li {
-    @apply my-1 font-serif;
+    @apply my-1;
+  }
+  .markdown li::before {
+    content: '- ';
   }
   .markdown :link {
     @apply font-mono underline bg-item-light dark:bg-item-dark rounded p-1;

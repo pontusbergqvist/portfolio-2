@@ -1,5 +1,4 @@
 import { Asset, EntryFields } from 'contentful';
-import { Document } from '@contentful/rich-text-types';
 
 export interface Post {
   title: EntryFields.Text;
@@ -7,7 +6,7 @@ export interface Post {
   slug: EntryFields.Text;
   timeToRead: EntryFields.Number;
   image: Asset;
-  body: Document;
+  body: string;
   id: string;
   date: string;
   tags: string[];

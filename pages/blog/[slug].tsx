@@ -70,9 +70,12 @@ const Post = ({ post, nextPost, previousPost }: Props) => {
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
         </div>
         <div className="flex my-5">
-          <div className="h-[75px] w-[75px] border border-accent rounded-full"></div>
+          <img
+            className="h-[90px] w-[90px] border-2 border-accent rounded-full"
+            src="/myself.jpg"
+          />
           <div className="mx-5 self-center">
-            <p className="mt-2">Pontus bergqvist</p>
+            <p className="mt-2">Pontus Bergqvist</p>
             <p className="text-sm">{date.slice(0, 10)}</p>
           </div>
         </div>

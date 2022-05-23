@@ -1,7 +1,6 @@
 import Breadcrumbs from '../../components/shared/breadcrumbs';
 import Heading from '../../components/shared/heading';
 import Layout from '../../components/layout';
-import Tags from '../../components/shared/tags';
 import Button from '../../components/shared/button';
 import Contentful from '../../api/contentful';
 import AnimateQueryPage from '../../components/shared/animatequerypage';

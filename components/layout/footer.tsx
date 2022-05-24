@@ -16,6 +16,7 @@ const Footer = () => {
               whileHover={{ scale: 1.2, color: '#FF4A6B' }}
               href="mailto:pontus@bergqvist.io"
               className="pr-3 py-1 text-h2 text-dark dark:text-light"
+              aria-label="Send me an email"
             >
               <FiMail />
             </motion.a>
@@ -25,6 +26,7 @@ const Footer = () => {
               whileHover={{ scale: 1.2, color: '#FF4A6B' }}
               href="https://github.com/pontusbergqvist"
               className="px-3 py-1 text-h2 text-dark dark:text-light"
+              aria-label="Github"
             >
               <FiGithub />
             </motion.a>
@@ -34,6 +36,7 @@ const Footer = () => {
               whileHover={{ scale: 1.2, color: '#FF4A6B' }}
               href="https://www.linkedin.com/in/pontus-bergqvist-02119a177"
               className="pl-3 py-1 text-dark dark:text-light rounded text-h2"
+              aria-label="Linkedin"
             >
               <FiLinkedin />
             </motion.a>

@@ -24,16 +24,18 @@ const MenuItems = () => {
   }, [router.route]);
 
   return (
-    <ul className="w-[360px] h-[35px] hidden md:flex items-center justify-between relative">
-      <MenuItem route="/" />
-      <MenuItem route="/work" />
-      <MenuItem route="/blog" />
+    <div className="w-[360px] h-[35px] hidden md:block relative">
+      <ul className="w-full h-full hidden md:flex items-center justify-between">
+        <MenuItem route="/" />
+        <MenuItem route="/work" />
+        <MenuItem route="/blog" />
+      </ul>
       <motion.div
-        className={`bg-item-dark dark:bg-item-light h-full w-[72px] rounded absolute`}
+        className={`bg-item-dark dark:bg-item-light h-full top-0 w-[72px] rounded absolute`}
         animate={{ x: position, translateX: translate }}
         initial={false}
       ></motion.div>
-    </ul>
+    </div>
   );
 };
 

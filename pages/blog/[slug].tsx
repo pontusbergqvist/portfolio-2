@@ -3,6 +3,7 @@ import Heading from '../../components/shared/heading';
 import Tags from '../../components/shared/tags';
 import Button from '../../components/shared/button';
 import Contentful from '../../api/contentful';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { AdjacentPostData, Post } from '../../models/blog';
@@ -60,20 +61,27 @@ const Post = ({ post, nextPost, previousPost }: Props) => {
           {date.slice(0, 10)} — {timeToRead} min read
         </p>
         <Heading>{title}</Heading>
-        <img
-          src={image.fields.file.url}
-          alt={title}
-          className="mt-4 w-full shadow-lg h-[250px] object-cover rounded mb-3"
-        />
+        <div className="mt-4 w-full shadow-lg h-[250px] object-cover rounded mb-3 relative overflow-hidden">
+          <Image
+            src={`https:${image.fields.file.url}`}
+            alt={title}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
         <Tags tags={tags} />
         <div className="markdown">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
         </div>
         <div className="flex my-5">
-          <img
-            className="h-[90px] w-[90px] border-2 border-accent rounded-full"
-            src="/myself.jpg"
-          />
+          <div className="relative overflow-hidden h-[75px] w-[75px] border-2 border-accent rounded-full">
+            <Image
+              src="/myself.jpg"
+              alt="Picture of myself"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
           <div className="mx-5 self-center">
             <p className="mt-2">Pontus Bergqvist</p>
             <p className="text-sm">{date.slice(0, 10)}</p>

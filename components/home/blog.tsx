@@ -15,7 +15,7 @@ const Blog = ({ posts }: Props) => {
       </div>
       <div className="grid w-full mx-auto grid-cols-1 blog:grid-cols-2 gap-8 my-4">
         {posts.map(
-          (post, index) => index < 2 && <BlogCard key={index} post={post} />
+          (post, index) => index < 2 && <BlogCard key={post.id} post={post} />
         )}
       </div>
       <Link to="/blog">View posts</Link>

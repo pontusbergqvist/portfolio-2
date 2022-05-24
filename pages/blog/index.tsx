@@ -28,8 +28,8 @@ const Blog: NextPage<Posts> = ({ posts }) => {
         <Heading>Blog</Heading>
         <p className="mb-5 mt-2 text-sm">Latest posts</p>
         <div className="grid grid-cols-1 blog:grid-cols-2 gap-8">
-          {posts.map((post, index) => (
-            <BlogCard key={index} post={post} />
+          {posts.map((post) => (
+            <BlogCard key={post.id} post={post} />
           ))}
         </div>
       </div>

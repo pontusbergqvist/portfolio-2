@@ -5,6 +5,7 @@ import Button from '../../components/shared/button';
 import Contentful from '../../api/contentful';
 import AnimateQueryPage from '../../components/shared/animatequerypage';
 import ExternalLink from '../../components/work/externallink';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Project } from '../../models/work';
@@ -61,11 +62,14 @@ const Project = ({ project, nextProject, previousProject }: Props) => {
     <AnimateQueryPage id={project.slug} title={title} direction={dir}>
       <Layout>
         <Heading>{title}</Heading>
-        <img
-          src={image.fields.file.url}
-          alt={title}
-          className="my-4 w-full h-[250px] object-cover rounded shadow-lg"
-        />
+        <div className="mt-4 w-full shadow-lg h-[250px] object-cover rounded mb-3 relative overflow-hidden">
+          <Image
+            src={`https:${image.fields.file.url}`}
+            alt={title}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
         <Breadcrumbs current={title} />
         <div className="markdown my-5">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>

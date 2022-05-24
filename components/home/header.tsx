@@ -1,11 +1,18 @@
 import { GoLocation } from 'react-icons/go';
+import Image from 'next/image';
 
 const Header = () => {
   return (
     <header className="my-28">
       <div className="flex flex-col items-center sm:items-start sm:flex-row">
         <div className="h-[100px] w-[100px] border-2 border-accent rounded-full relative overflow-hidden">
-          <img src="/myself.jpg" />
+          <Image
+            src="/myself.jpg"
+            alt="Picture of me"
+            layout="fill"
+            objectFit="cover"
+            quality={100}
+          />
         </div>
         <div className="mx-5">
           <h1 className="text-h1 font-mono">Pontus Bergqvist</h1>

@@ -16,7 +16,7 @@ const Header = () => {
         </div>
         <div className="mx-5">
           <h1 className="text-h1 font-mono">Pontus Bergqvist</h1>
-          <p className="text-white text-h3 py-1 px-2 bg-accent inline">
+          <p className="text-white text-h3 py-1 px-2 [text-shadow:0_2px_3px_rgba(30,39,59,0.7)] bg-accent inline">
             Full-stack web developer
           </p>
           <p className="flex items-center font-mono my-1">

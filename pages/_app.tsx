@@ -21,6 +21,10 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme="light">
       <Head>
+        <meta
+          name="description"
+          content="A personal portfolio website by full-stack developer Pontus Bergqvist."
+        />
         <title>{`${routeToString(router.route)} | Bergqvist.io`}</title>
         <link rel="shortcut icon" href="/favicon.ico?" />
       </Head>

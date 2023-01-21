@@ -7,7 +7,7 @@ const About = () => {
       <main>
         <Heading>About</Heading>
         <p className="indent-4 mt-2">
-          I a a full-stack web developer from Gothenburg, Sweden. Currently I
+          I am a full-stack web developer from Gothenburg, Sweden. Currently I
           work as a front-end developer at
           <span className="text-accent"> Consid</span> in Ljungby. My favorite
           technologies include <span className="text-accent">NextJS</span>,{' '}

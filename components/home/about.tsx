@@ -8,10 +8,11 @@ const About = () => {
         <Heading>About</Heading>
         <p className="indent-4 mt-2">
           I am a full-stack web developer from Gothenburg, Sweden. Currently I
-          am pursuing university studies, graduating in 2022. My interests
-          include <span className="text-accent">React</span>,{' '}
+          work as a front-end developer at
+          <span className="text-accent"> Consid</span> in Ljungby. My favorite
+          technologies include <span className="text-accent">NextJS</span>,{' '}
           <span className="text-accent">TypeScript</span> and{' '}
-          <span className="text-accent">web design</span>!
+          <span className="text-accent">Tailwind</span>.
         </p>
       </main>
       <section className="my-2">
